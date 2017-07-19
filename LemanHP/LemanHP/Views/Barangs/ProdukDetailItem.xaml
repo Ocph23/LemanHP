@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImage="wallpaper.png"
+             x:Class="LemanHP.Views.Barangs.ProdukDetailItem" Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Style="{DynamicResource categoryPanel}">
+            <Label Style="{DynamicResource labelStyle}" Text="Welcome to Xamarin Forms!" />
+            <Label Style="{DynamicResource labelStyle}" Text="Welcome to Xamarin Forms!" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
