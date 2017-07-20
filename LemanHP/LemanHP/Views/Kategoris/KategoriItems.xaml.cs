@@ -15,20 +15,14 @@ namespace LemanHP.Views.Kategoris
         private KategorisItemViewModel kategorisItemViewModel;
 
         public ObservableCollection<string> Items { get; set; }
-
+        public KategoriItems()
+        {
+            InitializeComponent();
+        }
         public KategoriItems(KategorisItemViewModel kategorisItemViewModel)
         {
             InitializeComponent();
             this.kategorisItemViewModel = kategorisItemViewModel;
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
             BindingContext = this.kategorisItemViewModel;
         }
 

@@ -4,12 +4,28 @@ namespace LemanHP.ViewModels.Barangs
 {
     public class ProdukDetailItemViewModel:BaseViewModel
     {
-        private Produk item;
+        private Produk _produk;
 
         public ProdukDetailItemViewModel(Produk item)
         {
             Title = item.Nama;
-            this.item = item;
+            this.produk = item;
         }
+
+        public Produk produk {
+            get
+            {
+                return _produk;
+            }
+            set
+            {
+                SetProperty(ref _produk, value);
+            }
+
+
+        }
+
+
+
     }
 }

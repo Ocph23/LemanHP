@@ -3,11 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LemanHP.Views.Kategoris.KategoriView"
               xmlns:local="clr-namespace:LemanHP;assembly=LemanHP"
-             Title="Kategori" BackgroundImage="wallpaper.png"
-             >
-    <Grid>
-        
-    </Grid>
+             Title="Kategori" BackgroundImage="wallpaper.png">
     <ListView ItemsSource="{Binding Items}"  x:Name="ItemsListView"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -15,33 +11,18 @@
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement"
+              SeparatorVisibility="None"
 				ItemSelected="OnItemSelected">
 
         <!--Built in Cells-->
     <ListView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate >
                 <ViewCell>
-                    <StackLayout Padding="20"  Style="{DynamicResource categoryPanel}">
-                        <Label Text="{Binding Nama}" Style="{DynamicResource labelStyle }"/>
+                    <StackLayout Padding="20"  HeightRequest="40"   Style="{DynamicResource categoryPanel}"  >
+                        <Label VerticalOptions="CenterAndExpand" FontSize="20" Text="{Binding Nama}" Style="{DynamicResource labelStyle }"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
   </ListView>
 </ContentPage>

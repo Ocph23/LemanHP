@@ -16,5 +16,10 @@ namespace LemanHP.Views.JenisProduks
         {
             InitializeComponent();
         }
+
+        private void ItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+        }
     }
 }

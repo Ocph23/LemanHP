@@ -13,13 +13,16 @@ namespace LemanHP.Views.Barangs
     public partial class KainDetailItem : ContentPage
     {
         private KainDetailItemViewModel kainDetailItemViewModel;
-
+      
         public KainDetailItem(KainDetailItemViewModel kainDetailItemViewModel)
         {
-
             InitializeComponent();
             this.kainDetailItemViewModel = kainDetailItemViewModel;
             this.BindingContext = kainDetailItemViewModel;
+        }
+        public KainDetailItem()
+        {
+            InitializeComponent();
         }
     }
 }

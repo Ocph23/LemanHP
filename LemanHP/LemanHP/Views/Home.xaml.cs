@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using LemanHP.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +17,8 @@ namespace LemanHP.Views
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
+
+        public AuthenticationToken Token { get; internal set; }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

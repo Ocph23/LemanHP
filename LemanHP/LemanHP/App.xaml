@@ -9,37 +9,47 @@
             <Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
-
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
-
-
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="BorderColor" Value="Lime" />
-                <Setter Property="BorderRadius" Value="5" />
-                <Setter Property="BorderWidth" Value="5" />
-                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderRadius" Value="30" />
+                <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="TextColor" Value="#E4FDE1" />
                 <Setter Property="BackgroundColor" Value="#F45B69"/>
             </Style>
-
-
-            <Style x:Key="categoryPanel" TargetType="StackLayout">
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="BackgroundColor" Value="#456990"/>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="#17BDC9" />
+                <Setter Property="BackgroundColor" Value="#F1FAEE"/>
+                <Setter Property="PlaceholderColor" Value="#ACB0BD"/>
+                <Setter Property="Opacity" Value="0.5"/>
             </Style>
-
+            <Style x:Key="pickerStyle" TargetType="Picker">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#F1FAEE"/>
+                <Setter Property="TextColor" Value="#17BDC9" />
+                <Setter Property="Opacity" Value="0.5"/>
+            </Style>
+            <Style x:Key="categoryPanel" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#456990"/>
+                <Setter Property="Margin" Value="20,5,20,5"/>
+                <Setter Property="Opacity" Value="0.5"/>
+            </Style>
+            <Style x:Key="itemsPanel" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="#456990"/>
+                <Setter Property="Margin" Value="3"/>
+                <Setter Property="Opacity" Value="0.5"/>
+            </Style>
 
             <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#17BDC9"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="labelHarga" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
             </Style>
 
 

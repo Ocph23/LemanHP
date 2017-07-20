@@ -18,22 +18,37 @@ namespace LemanHP.Services
            
            // this.MaxResponseContentBufferSize = 256000;
             this.BaseAddress = new Uri("http://192.168.1.6/");
-            //GenerateTokenAsync();
+            this.CekToken();
         }
 
-        public AuthenticationToken Token { get; private set; }
+        private void CekToken()
+        {
+            var token = Helpers.Helper.GetMainPage().Token;
+             if(token!=null)
+            {
+                this.DefaultRequestHeaders.Authorization =
+                   new AuthenticationHeaderValue(token.token_type, token.access_token);
+            }
+        }
 
-        private async void GenerateTokenAsync()
+       public async Task<AuthenticationToken> GenerateTokenAsync(string user, string password)
         {
             try
             {
-                var result = PostAsync("Token", new StringContent("grant_type=password&username=Ocph23@gmail.com&password=Sony@77", Encoding.UTF8)).Result;
+                var str = string.Format("grant_type=password&username={0}&password={1}",user,password);
+                var result = PostAsync("Token", new StringContent(str, Encoding.UTF8)).Result;
                 if (result.IsSuccessStatusCode)
                 {
                     var content = await result.Content.ReadAsStringAsync();
-                    this.Token = JsonConvert.DeserializeObject<AuthenticationToken>(content);
-                    this.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(Token.token_type, Token.access_token);
+                    var Token = JsonConvert.DeserializeObject<AuthenticationToken>(content);
+
+                    if(Token!=null)
+                    {
+                        Token.Email = user;
+                    }
+
+                    Helpers.Helper.GetMainPage().Token = Token;
+                    return Token;
                 }else
                 {
                     throw new System.Exception(result.StatusCode.ToString());
@@ -43,6 +58,7 @@ namespace LemanHP.Services
             catch (Exception ex)
             {
                 Helpers.Alert.Show("Alert", ex.Message);
+                return null;
             }
          
         }
@@ -54,5 +70,6 @@ namespace LemanHP.Services
         public string access_token { get; set; }
         public string token_type { get; set; }
         public int expires_in { get; set; }
+        public string Email { get; internal set; }
     }
 }

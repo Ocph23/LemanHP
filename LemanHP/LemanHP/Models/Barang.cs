@@ -3,18 +3,18 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 
 namespace LemanHP.Models
 {
     public class Barang : ObservableObject
     {
-        private ObservableRangeCollection<Foto> _fotoes;
+        private ObservableCollection<Foto> _fotoes;
 
         public Barang()
         {
             this.BarangKategoris = new HashSet<BarangKategori>();
-            this.Fotoes = new ObservableRangeCollection<Foto>();
+            this.Fotoes = new ObservableCollection<Foto>();
         }
 
         public int Id { get; set; }
@@ -26,7 +26,7 @@ namespace LemanHP.Models
         public double Stock { get; set; }
 
         public virtual ICollection<BarangKategori> BarangKategoris { get; set; }
-        public virtual ObservableRangeCollection<Foto> Fotoes {
+        public virtual ObservableCollection<Foto> Fotoes {
             get { return _fotoes; }
             set
             {

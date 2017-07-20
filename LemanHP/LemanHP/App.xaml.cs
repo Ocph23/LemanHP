@@ -6,7 +6,7 @@ using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace LemanHP
-{
+{   
     public partial class App : Application
     {
         public App()

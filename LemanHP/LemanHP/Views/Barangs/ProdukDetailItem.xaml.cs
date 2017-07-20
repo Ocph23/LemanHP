@@ -12,19 +12,15 @@ namespace LemanHP.Views.Barangs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProdukDetailItem : ContentPage
     {
-        private ProdukDetailItemViewModel produkDetailItemViewModel;
-
+        public ProdukDetailItem(ProdukDetailItemViewModel produkDetailItemViewModel)
+        {
+            InitializeComponent();
+            this.BindingContext = produkDetailItemViewModel;
+        }
         public ProdukDetailItem()
         {
             InitializeComponent();
         }
-
-        public ProdukDetailItem(ProdukDetailItemViewModel produkDetailItemViewModel)
-        {
-          
-            this.produkDetailItemViewModel = produkDetailItemViewModel;
-            this.BindingContext = produkDetailItemViewModel;
-        }
-       
+      
     }
 }

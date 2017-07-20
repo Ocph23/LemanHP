@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImage="wallpaper.png" Title="{Binding Title}"
+             x:Class="LemanHP.Views.Account.RegisterView">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="30,10">
+          
+            
+                <Image Source="profile_generic.png" HeightRequest="50" Margin="10"/>
+                <Entry Placeholder="Email" Style="{DynamicResource entryStyle}" />
+            <Entry Placeholder="Password" IsPassword="True" Style="{DynamicResource entryStyle}" />
+            <Entry Placeholder="Ulangi Password" IsPassword="True" Style="{DynamicResource entryStyle}" />
+            <Entry Placeholder="Nama Lengkap" Style="{DynamicResource entryStyle}" />
+            <Entry Placeholder="Alamat" HeightRequest="100" Style="{DynamicResource entryStyle}" />
+            <Picker Title="Propinsi" Style="{DynamicResource pickerStyle}">
+                <Picker.Items>
+                    <x:String>Baboon</x:String>
+                    <x:String>Capuchin Monkey</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Kabupaten" Style="{DynamicResource pickerStyle}">
+                <Picker.Items>
+                    <x:String>Baboon</x:String>
+                    <x:String>Capuchin Monkey</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Kecamatan" Style="{DynamicResource pickerStyle}">
+                <Picker.Items>
+                    <x:String>Baboon</x:String>
+                    <x:String>Capuchin Monkey</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry Placeholder="Nomor Telepon"  Style="{DynamicResource entryStyle}" />
+
+            <Button Style="{DynamicResource buttonStyle}" Margin="0,20,0,0" Text="Register" HorizontalOptions="FillAndExpand"/>
+          
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
