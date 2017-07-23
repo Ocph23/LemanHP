@@ -18,11 +18,11 @@ namespace LemanHP.ViewModels.Barangs
             Title = "Home";
             Kains = new ObservableRangeCollection<Models.Kain>();
             Produks = new ObservableRangeCollection<Models.Produk>();
-            //LoadItemsCommand = new Command(async()=> await ExecuteLoadItemsCommand());
-            ExecuteLoadItemsCommand();
+            LoadItemsCommand = new Command((x)=> ExecuteLoadItemsCommand(x));
+            ExecuteLoadItemsCommand(null);
         }
 
-        private async void ExecuteLoadItemsCommand()
+        private async void ExecuteLoadItemsCommand(object x)
         {
             if (IsBusy)
                 return;

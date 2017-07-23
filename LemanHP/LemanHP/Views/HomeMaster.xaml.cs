@@ -38,16 +38,12 @@ namespace LemanHP.Views
                     new HomeMenuItem { Id = 0, Title = "Home" },
                     new HomeMenuItem { Id = 1, Title = "Kategori" , TargetType=typeof(Views.Kategoris.KategoriView)},
                     new HomeMenuItem { Id = 2, Title = "Jenis Barang" ,TargetType=typeof(Views.JenisProduks.JenisProdukView) },
-                    new HomeMenuItem { Id = 3, Title = "Keranjang" },
+                    new HomeMenuItem { Id = 3, Title = "Keranjang",TargetType=typeof(Views.Carts.CartView) },
                     new HomeMenuItem { Id = 4, Title = "Login/Logout", TargetType=typeof(Views.Account.LoginView) },
                     new HomeMenuItem { Id = 5, Title = "Help", TargetType=typeof(Views.Helps.Help) },
                 });
 
-                var token = Helpers.Helper.GetMainPage().Token;
-                if(token!=null)
-                {
-                    UserName = token.Email;
-                }
+               
 
             }
 

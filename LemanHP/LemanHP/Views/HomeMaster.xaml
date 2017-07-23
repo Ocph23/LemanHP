@@ -22,7 +22,6 @@
                         <Label TextColor="#5A0B4D" HorizontalOptions="Center" FontSize="16" Text="BATIK PAPUA" />
                     </StackLayout>
                     <Image Source="profile_generic.png" Grid.Row="1"/>
-                    <Label Grid.Row="2" TextColor="#5A0B4D" HorizontalOptions="Center" FontSize="12" Text="{Binding UserName,StringFormat='Hai , {0}'}" />
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>

@@ -15,6 +15,7 @@ namespace LemanHP.ViewModels
         public IDataStore<Kategori> KategoriDataStore => DependencyService.Get<IDataStore<Kategori>>();
         public IDataStore<Kain> KainDataStore => DependencyService.Get<IDataStore<Kain>>();
         public IDataStore<Produk> ProdukDataStore => DependencyService.Get<IDataStore<Produk>>();
+        public IDataStore<CartItem> CartDataStore => DependencyService.Get<IDataStore<CartItem>>();
 
         bool isBusy = false;
         public bool IsBusy

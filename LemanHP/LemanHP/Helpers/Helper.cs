@@ -10,11 +10,12 @@ namespace LemanHP.Helpers
 {
     public static class Helper
     {
-        public static Home GetMainPage()
+        public static async Task<Home> GetMainPageAsync()
         {
-            return (Home)Xamarin.Forms.Application.Current.MainPage;
+            var x = await Task.FromResult(Xamarin.Forms.Application.Current.MainPage);
+            return x as Home;
         }
 
-       
+
     }
 }

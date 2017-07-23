@@ -41,6 +41,6 @@
                            'Lorem ipsum dolor sit amet..', berasal dari sebuah baris di bagian 1.10.32." />
             </StackLayout>
         </ScrollView>
-        <Button Style="{DynamicResource buttonStyle}" HorizontalOptions="FillAndExpand" Text="Beli"/>
+        <Button Command="{Binding CommandBeli}" Style="{DynamicResource buttonStyle}" HorizontalOptions="FillAndExpand" Text="Beli"/>
     </StackLayout>
 </ContentPage>

@@ -12,15 +12,13 @@
             <converters:ImageConverter x:Key="ImageConverter"/>
         </ResourceDictionary>
     </TabbedPage.Resources>
-    
-    
     <ContentPage Title="Kain" BackgroundImage="wallpaper.jpg">
         <ListView ItemsSource="{Binding Kains}"  x:Name="KainItemsListView"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                 CachingStrategy="RecycleElement"
 				ItemSelected="KainOnItemSelected">
 
@@ -74,9 +72,6 @@
                             </Grid.ColumnDefinitions>
                             <StackLayout Padding="10" Grid.Column="0">
                                 <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="16"/>
-                                <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                                <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                                <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
                             </StackLayout>
                             <RelativeLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
                                 <Image Source="{Binding Fotoes[0].Picture,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"

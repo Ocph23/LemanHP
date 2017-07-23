@@ -18,20 +18,20 @@ namespace LemanHP.Services
            
            // this.MaxResponseContentBufferSize = 256000;
             this.BaseAddress = new Uri("http://192.168.1.6/");
-            this.CekToken();
+           Task.Run(async()=> await this.CekTokenAsync());
         }
 
-        private void CekToken()
+        private async Task CekTokenAsync()
         {
-            var token = Helpers.Helper.GetMainPage().Token;
-             if(token!=null)
+            var main = await Helpers.Helper.GetMainPageAsync();
+            if (main.Token != null)
             {
                 this.DefaultRequestHeaders.Authorization =
-                   new AuthenticationHeaderValue(token.token_type, token.access_token);
+                   new AuthenticationHeaderValue(main.Token.token_type, main.Token.access_token);
             }
         }
 
-       public async Task<AuthenticationToken> GenerateTokenAsync(string user, string password)
+        public async Task<AuthenticationToken> GenerateTokenAsync(string user, string password)
         {
             try
             {
@@ -47,7 +47,8 @@ namespace LemanHP.Services
                         Token.Email = user;
                     }
 
-                    Helpers.Helper.GetMainPage().Token = Token;
+                    var main = await Helpers.Helper.GetMainPageAsync();
+                    main.Token= Token;
                     return Token;
                 }else
                 {

@@ -15,6 +15,7 @@ namespace LemanHP.Views.Kategoris
         private KategorisItemViewModel kategorisItemViewModel;
 
         public ObservableCollection<string> Items { get; set; }
+
         public KategoriItems()
         {
             InitializeComponent();
@@ -35,6 +36,11 @@ namespace LemanHP.Views.Kategoris
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private void KategoriItemsOnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
         }
     }
 }
