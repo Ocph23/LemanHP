@@ -34,19 +34,19 @@ namespace LemanHP.Services
 
         public async Task<Kategori> GetItemAsync(int id)
         {
-            await Initialize();
+            await InitializeAsync();
 
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Kategori>> GetItemsAsync(bool forceRefresh = false)
         {
-            await Initialize();
+            await InitializeAsync();
 
             return await Task.FromResult(items);
         }
 
-        public async Task Initialize()
+        public async Task InitializeAsync()
         {
             if (isInitialized)
                 return;

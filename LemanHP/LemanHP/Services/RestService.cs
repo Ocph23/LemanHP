@@ -18,8 +18,19 @@ namespace LemanHP.Services
            
            // this.MaxResponseContentBufferSize = 256000;
             this.BaseAddress = new Uri("http://192.168.1.6/");
-           Task.Run(async()=> await this.CekTokenAsync());
+            //key api = 57557c4f25f436213fe34a2090a266e2
+            Task.Run(async()=> await this.CekTokenAsync());
         }
+
+
+        public RestService(string apiUrl)
+        {
+            this.BaseAddress = new Uri(apiUrl);
+          
+        }
+
+
+
 
         private async Task CekTokenAsync()
         {
@@ -65,6 +76,13 @@ namespace LemanHP.Services
         }
     }
 
+    internal class NameValueCollection
+    {
+        internal void Add(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     public class AuthenticationToken
     {

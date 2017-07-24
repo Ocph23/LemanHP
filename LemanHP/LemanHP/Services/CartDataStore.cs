@@ -76,7 +76,7 @@ namespace LemanHP.Services
             throw new NotImplementedException();
         }
 
-        Task IDataStore<CartItem>.Initialize()
+        Task IDataStore<CartItem>.InitializeAsync()
         {
             throw new NotImplementedException();
         }

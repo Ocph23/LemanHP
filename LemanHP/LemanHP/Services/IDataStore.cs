@@ -12,7 +12,7 @@ namespace LemanHP.Services
         Task<T> GetItemAsync(int id);
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
 
-        Task Initialize();
+        Task InitializeAsync();
         Task<bool> PullLatestAsync();
         Task<bool> SyncAsync();
     }

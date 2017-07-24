@@ -34,18 +34,18 @@ namespace LemanHP.Services
 
         public async Task<Produk> GetItemAsync(int id)
         {
-            await Initialize();
+            await InitializeAsync();
 
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Produk>> GetItemsAsync(bool forceRefresh = false)
         {
-            await Initialize();
+            await InitializeAsync();
             return await Task.FromResult(items);
         }
 
-        public async Task Initialize()
+        public async Task InitializeAsync()
         {
             if (isInitialized)
                 return;

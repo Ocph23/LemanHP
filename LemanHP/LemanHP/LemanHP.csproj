@@ -58,9 +58,11 @@
     <Compile Include="Models\Satuan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CartDataStore.cs" />
+    <Compile Include="Services\ICityDataStore.cs" />
     <Compile Include="Services\IDataStore.cs" />
     <Compile Include="Services\KainDataStore.cs" />
     <Compile Include="Services\KategoriDataStore.cs" />
+    <Compile Include="Services\CityDataStore.cs" />
     <Compile Include="Services\ProdukDataStore.cs" />
     <Compile Include="Services\RestService.cs" />
     <Compile Include="ViewModels\Accounts\LoginViewModel.cs" />
