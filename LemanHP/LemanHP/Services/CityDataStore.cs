@@ -14,7 +14,6 @@ namespace LemanHP.Services
     public class CityDataStore:ICityDataStore
     {
         bool isInitializedProvince;
-        List<City> items;
         private List<Province> _provinces;
         private bool isInitializedCity;
         private CityResult _cities;

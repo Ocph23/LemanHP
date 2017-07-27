@@ -32,10 +32,20 @@
                                 <ColumnDefinition Width="60*"/>
                             </Grid.ColumnDefinitions>
                             <StackLayout Padding="10" Grid.Column="0">
-                                <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="16"/>
-                                <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                                <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                                <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
+                                <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="16"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Bahan"  LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="12"/>
+                                    <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="10"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Stok"  LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="12"/>
+                                    <Label Text="{Binding Stock}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="10"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Motif"  LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="12"/>
+                                    <Label Text="{Binding Motif}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="10"/>
+                                </StackLayout>
+
                             </StackLayout>
                             <RelativeLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
                                 <Image Source="{Binding Gambar,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"
@@ -43,8 +53,9 @@
                                     RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                                     RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">       
                                 </Image>
-                                <Label Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End" TextColor="WhiteSmoke"  FontSize="14"/>
-                                <Label Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End" TextColor="WhiteSmoke" FontSize="12"/>
+                                <Label Style="{DynamicResource labelStyle}" Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End"   FontSize="16"/>
+                                <Label Style="{DynamicResource labelStyle}" Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End"  FontSize="12"/>
+                                <Label Style="{DynamicResource labelStyle}" Margin="5,35" Text="{Binding Discount, StringFormat='Disc {0}%'}" HorizontalOptions="End"   FontSize="16"/>
                             </RelativeLayout>
                         </Grid>
                     </ViewCell>
@@ -71,7 +82,19 @@
                                 <ColumnDefinition Width="60*"/>
                             </Grid.ColumnDefinitions>
                             <StackLayout Padding="10" Grid.Column="0">
-                                <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="16"/>
+                                <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="16"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Jenis"  LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="12"/>
+                                    <Label Text="{Binding JenisProduk.Nama}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="10"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Stok"  LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="12"/>
+                                    <Label Text="{Binding Stock}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="10"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Ukuran"  LineBreakMode="NoWrap" Style="{DynamicResource labelHarga}" FontSize="12"/>
+                                    <Label Text="{Binding Size}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="10"/>
+                                </StackLayout>
                             </StackLayout>
                             <RelativeLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
                                 <Image Source="{Binding Fotoes[0].Picture,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"
@@ -79,8 +102,9 @@
                                     RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                                     RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">       
                                 </Image>
-                                <Label Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End" TextColor="WhiteSmoke"  FontSize="14"/>
-                                <Label Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End" TextColor="WhiteSmoke" FontSize="12"/>
+                                <Label Style="{DynamicResource labelStyle}" Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End"   FontSize="16"/>
+                                <Label Style="{DynamicResource labelStyle}" Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End"  FontSize="12"/>
+                                <Label Style="{DynamicResource labelStyle}" Margin="5,35" Text="{Binding Discount, StringFormat='Disc {0}%'}" HorizontalOptions="End"   FontSize="16"/>
                             </RelativeLayout>
                         </Grid>
                     </ViewCell>

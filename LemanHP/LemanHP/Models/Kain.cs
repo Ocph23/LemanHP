@@ -14,6 +14,7 @@ namespace LemanHP.Models
 
         public string Bahan { get; set; }
         public bool Luntur { get; set; }
+        public string Motif { get; set; }
         public byte[] Gambar { get {
                 if(gambar==null)
                 {

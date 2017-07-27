@@ -17,7 +17,7 @@ namespace LemanHP.Services
         {
            
            // this.MaxResponseContentBufferSize = 256000;
-            this.BaseAddress = new Uri("http://192.168.1.6/");
+            this.BaseAddress = new Uri("http://192.168.1.30/");
             //key api = 57557c4f25f436213fe34a2090a266e2
             Task.Run(async()=> await this.CekTokenAsync());
         }

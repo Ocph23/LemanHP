@@ -15,7 +15,10 @@ namespace LemanHP.Models
     public partial class Produk : Barang
     {
         public int JenisProdukId { get; set; }
-    
+        public string Warna { get; set; }
+        public string Dimensi { get; set; }
+        public string Size { get; set; }
+
         public virtual JenisProduk JenisProduk { get; set; }
     }
 }

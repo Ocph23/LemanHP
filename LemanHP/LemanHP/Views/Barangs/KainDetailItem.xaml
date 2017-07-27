@@ -10,37 +10,56 @@
             <converters:ImageConverter x:Key="ImageConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout >
+    <StackLayout>
         <Label Margin="10,10,0,0" Style="{DynamicResource labelHarga}" FontSize="16" Text="{Binding kain.Nama}" />
-        <Label Margin="10,0,0,0" Style="{DynamicResource labelHarga}" FontSize="12" Text="{Binding kain.Harga,StringFormat='Rp. {0}'}" />
-        <Label Margin="10,0,0,0" Style="{DynamicResource labelHarga}" FontSize="12" Text="Diskon 10%" />
+        <StackLayout Orientation="Horizontal">
+            <Label Margin="10,0,0,0" Style="{DynamicResource labelHarga}" TextColor="Red" FontSize="12" Text="{Binding kain.Harga,StringFormat='Rp. {0}'}" />
+            <Label Margin="0,0,0,0" Style="{DynamicResource labelHarga}"  FontSize="12" Text="{Binding kain.Discount,StringFormat='Disc {0}%,'}" />
+            <Label Margin="0,0,0,0" Style="{DynamicResource labelHarga}" FontSize="12" Text="{Binding kain.HargaAfterDiscount,StringFormat='Rp. {0}'}" />
+            <Label Margin="0,0,0,0" Style="{DynamicResource labelHarga}"  FontSize="10" Text="{Binding kain.Satuan}" />
+        </StackLayout>
+
         <cv:CarouselView ItemsSource="{Binding kain.Fotoes}"  Margin="20" x:Name="CarouselZoos" HeightRequest="200">
             <cv:CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Image Source="{Binding Picture,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"
-                               Aspect="AspectFill"
+                            Aspect="AspectFill"
                                     RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                                     RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
                     </Image>
                 </DataTemplate>
             </cv:CarouselView.ItemTemplate>
         </cv:CarouselView>
+
         <Label Margin="10,0,0,0" Style="{DynamicResource labelHarga}" FontSize="16" Text="Detail" />
         <ScrollView HeightRequest="150">
-            <StackLayout >
-                <Label Margin="30,0,0,0" LineBreakMode="WordWrap" Style="{DynamicResource labelStyle}" FontSize="12" Text="Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. 
-                           Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad,tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.
-                           Tidak seperti anggapan banyak orang, Lorem Ipsum bukanlah teks-teks yang diacak. Ia berakar dari sebuah naskah 
-                           sastra latin klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah mencapai lebih dari 2000 tahun.
-                           Richard McClintock, seorang professor Bahasa Latin dari Hampden-Sidney College di Virginia, mencoba mencari makna 
-                           salah satu kata latin yang dianggap paling tidak jelas, yakni consectetur, yang diambil dari salah satu bagian Lorem 
-                           Ipsum. Setelah ia mencari maknanya di di literatur klasik, ia mendapatkan sebuah sumber yang tidak bisa diragukan.
-                           Lorem Ipsum berasal dari bagian 1.10.32 dan 1.10.33 dari naskah 'de Finibus Bonorum et Malorum' 
-                           (Sisi Ekstrim dari Kebaikan dan Kejahatan) karya Cicero, yang ditulis pada tahun 45 sebelum masehi.
-                           BUku ini adalah risalah dari teori etika yang sangat terkenal pada masa Renaissance. Baris pertama dari Lorem Ipsum, 
-                           'Lorem ipsum dolor sit amet..', berasal dari sebuah baris di bagian 1.10.32." />
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="30,0,0,0">
+                    <Label Style="{DynamicResource labelHarga}" Margin="30,0,0,0" FontSize="14" Text="Stok" ></Label>
+                    <Label Style="{DynamicResource labelStyle}" Margin="30,0,0,0" FontSize="12" Text="{Binding kain.Stock}" ></Label>
+                    <Label Style="{DynamicResource labelStyle}" Margin="0" FontSize="12" Text="{Binding kain.Saturn}" ></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="30,0,0,0">
+                    <Label Style="{DynamicResource labelHarga}" Margin="30,0,0,0" FontSize="14" Text="Bahan"></Label>
+                    <Label Style="{DynamicResource labelStyle}" Margin="30,0,0,0" FontSize="12" Text="{Binding kain.Bahan}" ></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="30,0,0,0">
+                    <Label Style="{DynamicResource labelHarga}" Margin="30,0,0,0" FontSize="14" Text="Motif"  ></Label>
+                    <Label Style="{DynamicResource labelStyle}" Margin="30,0,0,0" FontSize="12" Text="{Binding kain.Motif}" ></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="30,0,0,0">
+                    <Label Style="{DynamicResource labelHarga}" Margin="30,0,0,0" FontSize="14" Text="Luntur" ></Label>
+                    <Label Style="{DynamicResource labelStyle}" Margin="30,0,0,0" FontSize="12" Text="Tidak" ></Label>
+                    <Switch IsToggled="{Binding kain.Luntur}" Margin="0" IsEnabled="False"></Switch>
+                    <Label Style="{DynamicResource labelStyle}" FontSize="12" Text="Ya" ></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="30,0,0,0">
+                    <Label Style="{DynamicResource labelHarga}" Margin="30,0,0,0" FontSize="14" Text="Keterangan"></Label>
+                    <Label Style="{DynamicResource labelStyle}" Margin="30,0,0,0" FontSize="12" Text="{Binding kain.Keterangan}" ></Label>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
-        <Button Command="{Binding CommandBeli}" Style="{DynamicResource buttonStyle}" HorizontalOptions="FillAndExpand" Text="Beli"/>
+        <Button Style="{DynamicResource buttonStyle}" HorizontalOptions="FillAndExpand" Text="Beli"/>
     </StackLayout>
 </ContentPage>
