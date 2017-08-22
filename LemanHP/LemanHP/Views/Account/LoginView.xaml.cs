@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LemanHP.ViewModels.Accounts;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LemanHP.Models;
 
 namespace LemanHP.Views.Account
 {
@@ -14,10 +15,10 @@ namespace LemanHP.Views.Account
 	{
         private LoginViewModel vm;
 
-        public LoginView ()
+        public LoginView (UserProfileViewModel Profile)
 		{
 			InitializeComponent ();
-           this.vm=new ViewModels.Accounts.LoginViewModel(Navigation);
+           this.vm=new ViewModels.Accounts.LoginViewModel(Navigation,Profile);
             this.BindingContext = this.vm;
 
         }
@@ -26,7 +27,10 @@ namespace LemanHP.Views.Account
         {
             var password = (Entry)sender;
             if (!string.IsNullOrEmpty(password.Text))
-                vm.Password = password.Text;
+                //   vm.Password = password.Text;
+                vm.Password = "Sony@77";
+
+
         }
     }
 }

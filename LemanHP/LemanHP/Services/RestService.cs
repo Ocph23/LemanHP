@@ -12,25 +12,21 @@ namespace LemanHP.Services
    public  class RestService: HttpClient
     {
 
-
         public RestService()
         {
            
            // this.MaxResponseContentBufferSize = 256000;
             this.BaseAddress = new Uri("http://192.168.1.30/");
+            this.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
             //key api = 57557c4f25f436213fe34a2090a266e2
             Task.Run(async()=> await this.CekTokenAsync());
         }
-
 
         public RestService(string apiUrl)
         {
             this.BaseAddress = new Uri(apiUrl);
           
         }
-
-
-
 
         private async Task CekTokenAsync()
         {
@@ -47,7 +43,7 @@ namespace LemanHP.Services
             try
             {
                 var str = string.Format("grant_type=password&username={0}&password={1}",user,password);
-                var result = PostAsync("Token", new StringContent(str, Encoding.UTF8)).Result;
+                var result = await PostAsync("Token", new StringContent(str, Encoding.UTF8));
                 if (result.IsSuccessStatusCode)
                 {
                     var content = await result.Content.ReadAsStringAsync();

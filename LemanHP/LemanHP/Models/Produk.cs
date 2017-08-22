@@ -9,16 +9,37 @@
 
 namespace LemanHP.Models
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
+
 
     public partial class Produk : Barang
     {
+        private byte[] gambar;
+
         public int JenisProdukId { get; set; }
         public string Warna { get; set; }
         public string Dimensi { get; set; }
         public string Size { get; set; }
 
         public virtual JenisProduk JenisProduk { get; set; }
+
+
+        public byte[] Gambar
+        {
+            get
+            {
+                if (gambar == null)
+                {
+                    if (Fotoes != null && Fotoes.Count > 0)
+                    {
+                        gambar = Fotoes.FirstOrDefault().Picture;
+                    }
+                }
+                return gambar;
+
+            }
+            set { SetProperty(ref gambar, value); }
+        }
+
     }
 }

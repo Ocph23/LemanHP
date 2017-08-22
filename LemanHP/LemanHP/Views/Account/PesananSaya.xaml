@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+               xmlns:converters="clr-namespace:LemanHP.Helpers;assembly=LemanHP"
+               BackgroundImage="wallpaper.png" Title="Konfirmasi Pembayaran"
+             x:Class="LemanHP.Views.Account.PesananSaya">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout>
+                <StackLayout Margin="5">
+                    <Label Style="{DynamicResource labelHarga}" Text="Dear,"/>
+                    <Label Style="{DynamicResource labelHarga}" Text="{Binding  pembelian.Nama}"/>
+                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.KodePesanan,StringFormat='Kode Pemesanan : {0}'}"/>
+                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.Tanggal}"/>
+                    <Label Style="{DynamicResource labelHarga}" Text="Rincian sebagai berikut :"/>
+                    <ListView Margin="5"  ItemsSource="{Binding pembelian.Datas}" x:Name="ItemsListView">
+                        <ListView.Header>
+                            <Grid BackgroundColor="#17BDC9">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout  Grid.Column="0" BackgroundColor="#17BDC9">
+                                    <Label Text="Nama Produk"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"  BackgroundColor="#17BDC9">
+                                    <Label Text="Kode"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2"  BackgroundColor="#17BDC9">
+                                    <Label Text="Qt"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3"  BackgroundColor="#17BDC9">
+                                    <Label Text="Total"/>
+                                </StackLayout>
+                            </Grid>
+                        </ListView.Header>
+
+                        <!--Built in Cells-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+                                    <Grid BackgroundColor="#17BDC9">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                            <ColumnDefinition Width="10*"/>
+                                            <ColumnDefinition Width="30*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0" BackgroundColor="#17BDC9" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Nama}"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1"  BackgroundColor="#17BDC9" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding KodeBarang}"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="2" BackgroundColor="#17BDC9" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Count}"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="3"  HorizontalOptions="End" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Biaya,StringFormat='Rp. {0}'}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Footer>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Grid.Row="0">
+                                    <Label Style="{DynamicResource labelHarga}" Text="TotalPembelian"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="Diskon"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="Kode Validasi Pembayaran"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="Biaya Pengiriman"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="Total"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.TotalBiaya, StringFormat='Rp. {0}'}}"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.TotalDiscount, StringFormat='Rp. {0}'}}"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.KodeValidasiPembayaran, StringFormat='Rp. {0}'}}"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.BiayaKirim, StringFormat='Rp. {0}'}}"/>
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding pembelian.TotalTrasfer, StringFormat='Rp. {0}'}}"/>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+                                    <Label Style="{DynamicResource labelStyle}" FontSize="20" Text="Konfirmasi Pembayaran"/>
+                                    <StackLayout Margin="0,5,0,0">
+                                        <Picker Title="Bank" ItemDisplayBinding="{Binding Nama}" SelectedItem="{Binding BankSelected}" 
+                                             Style="{DynamicResource pickerStyle}" ItemsSource="{Binding Banks}">
+                                        </Picker>
+                                    </StackLayout>
+                                    <StackLayout Margin="0,10,0,0">
+                                        <Entry Style="{DynamicResource entryStyle}" IsEnabled="False" Placeholder="Nomor Rekening" Text="{Binding BankSelected.Nomor}"  />
+                                    </StackLayout>
+                                    <StackLayout Margin="0,10,0,0">
+                                        <Entry Style="{DynamicResource entryStyle}"  Placeholder="Pengirim" Text="{Binding pembayaran.Pengirim}" />
+                                    </StackLayout>
+                                    <StackLayout Margin="0,10,0,0">
+                                        <Entry Style="{DynamicResource entryStyle}"  Placeholder="Jumlah" Text="{Binding pembayaran.NilaiTransfer}" />
+                                    </StackLayout>
+                                    <StackLayout Margin="0,10,0,0">
+                                        <DatePicker VerticalOptions="CenterAndExpand" DateSelected="DatePicker_DateSelected" Date="{x:Static sys:DateTime.Now}">
+                                            <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+                                            <DatePicker.MinimumDate>
+                                                <sys:DateTime x:FactoryMethod="Parse">
+                                                    <x:Arguments>
+                                                        <x:String>Jan 1 2000</x:String>
+                                                    </x:Arguments>
+                                                </sys:DateTime>
+                                            </DatePicker.MinimumDate>
+                                            <DatePicker.MaximumDate>
+                                                <sys:DateTime x:FactoryMethod="Parse">
+                                                    <x:Arguments>
+                                                        <x:String>Dec 31 2050</x:String>
+                                                    </x:Arguments>
+                                                </sys:DateTime>
+                                            </DatePicker.MaximumDate>
+                                        </DatePicker>
+                                    </StackLayout>
+                                    <StackLayout Margin="0,10,0,0">
+                                        <Image x:Name="PhotoImage" HeightRequest="200" Source="{Binding PhotoImage,Converter={StaticResource ImageConverter}}" />
+                                        <Button x:Name="CameraButton" Command="{Binding TakeFotoCommand}" Text="Take Photo"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0,10,0,0">
+                                        <Button HorizontalOptions="FillAndExpand" Command="{Binding KonfirmasiCommand}" Style="{DynamicResource buttonStyle}" Text="Konfirmasi"></Button>
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                            </Grid>
+                        </ListView.Footer>
+                    </ListView>
+
+                </StackLayout>
+            
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

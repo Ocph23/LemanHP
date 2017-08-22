@@ -31,7 +31,19 @@ namespace LemanHP.ViewModels.Barangs
                 var cart = new CartItem();
                 cart.SetBarang(barang);
                 bool result = await CartDataStore.AddItemAsync(cart);
-            }else
+                if (result)
+                {
+                    MessagingCenter.Send<Helpers.MessagingCenterAlert>(new Helpers.MessagingCenterAlert
+                    {
+                        Message = "Ditambahkan ke keranjang",
+                        Cancel = "Ok",
+                        Title = "Success",
+                        OnCompleted = new Action(MessageComplete)
+
+                    }, "message");
+                }
+            }
+            else
             {
                 MessagingCenter.Send(new Helpers.MessagingCenterAlert
                 {

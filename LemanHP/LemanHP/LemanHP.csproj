@@ -45,28 +45,43 @@
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
     <Compile Include="ImageResourceExtention.cs" />
+    <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Barang.cs" />
     <Compile Include="Models\BarangKategori.cs" />
     <Compile Include="Models\BaseDataObject.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\DetailPembelian.cs" />
     <Compile Include="Models\Foto.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\JenisProduk.cs" />
     <Compile Include="Models\Kain.cs" />
     <Compile Include="Models\Kategori.cs" />
+    <Compile Include="Models\Pelanggan.cs" />
+    <Compile Include="Models\Pembayaran.cs" />
+    <Compile Include="Models\Pembelian.cs" />
+    <Compile Include="Models\PembelianView.cs" />
+    <Compile Include="Models\Pengiriman.cs" />
     <Compile Include="Models\Produk.cs" />
     <Compile Include="Models\Satuan.cs" />
+    <Compile Include="Models\StatusPembayaran.cs" />
+    <Compile Include="Models\StatusPembelian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BarangDataStore.cs" />
     <Compile Include="Services\CartDataStore.cs" />
     <Compile Include="Services\ICityDataStore.cs" />
     <Compile Include="Services\IDataStore.cs" />
+    <Compile Include="Services\JenisProdukDataStore.cs" />
     <Compile Include="Services\KainDataStore.cs" />
     <Compile Include="Services\KategoriDataStore.cs" />
     <Compile Include="Services\CityDataStore.cs" />
+    <Compile Include="Services\PembayaranDataStore.cs" />
+    <Compile Include="Services\PembelianService.cs" />
     <Compile Include="Services\ProdukDataStore.cs" />
     <Compile Include="Services\RestService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\Accounts\LoginViewModel.cs" />
     <Compile Include="ViewModels\Accounts\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\UserProfileViewModel.cs" />
     <Compile Include="ViewModels\Barangs\BarangViewModel.cs" />
     <Compile Include="ViewModels\Barangs\KainDetailItemViewModel.cs" />
     <Compile Include="ViewModels\Barangs\ProdukDetailItemViewModel.cs" />
@@ -77,11 +92,18 @@
     <Compile Include="ViewModels\JenisProduks\JenisProdukViewModel.cs" />
     <Compile Include="ViewModels\Kategoris\KategorisItemViewModel.cs" />
     <Compile Include="ViewModels\Kategoris\KategoriViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\PesananSayaViewModel.cs" />
     <Compile Include="Views\Account\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Account\PesananSaya.xaml.cs">
+      <DependentUpon>PesananSaya.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Account\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\UserProfile.xaml.cs">
+      <DependentUpon>UserProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Barangs\Class1.cs" />
     <Compile Include="Views\Barangs\BarangView.xaml.cs">
@@ -98,6 +120,9 @@
     </Compile>
     <Compile Include="Views\Carts\CartView.xaml.cs">
       <DependentUpon>CartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Carts\PembayaranView.xaml.cs">
+      <DependentUpon>PembayaranView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Helps\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -141,6 +166,21 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Media, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
     </Reference>
@@ -155,6 +195,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\User.svg" />
+    <Compile Include="ViewModels\Carts\PembayaranViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Carts\CartView.xaml">
@@ -249,6 +291,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Carts\AddressDelivery.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Account\UserProfile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Carts\PembayaranView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Account\PesananSaya.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -79,7 +79,7 @@ namespace LemanHP.Services
             }
         }
 
-        public async Task<CostResult> GetCost(string courier, string weight, string origin, string destination)
+        public async Task<CostResult> GetCost(string courier, string weight, string destination)
         {
             using (var service = new RestService("http://api.rajaongkir.com/"))
             {
@@ -98,8 +98,8 @@ namespace LemanHP.Services
                     if (response.IsSuccessStatusCode)
                     {
                         var content = await response.Content.ReadAsStringAsync();
-                        var c = JsonConvert.DeserializeObject<CostResult>(content);
-                        return await Task.FromResult(c);
+                        var c = JsonConvert.DeserializeObject<rajaongkircost>(content);
+                        return await Task.FromResult(c.rajaongkir);
                     }
                     else
                     {

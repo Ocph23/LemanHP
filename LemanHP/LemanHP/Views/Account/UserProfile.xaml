@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LemanHP.Views.Account.UserProfile" 
+              xmlns:i="clr-namespace:LemanHP;assembly=LemanHP"
+              Title="{Binding Title}"
+             BackgroundImage="wallpaper.jpg">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand" Margin="30">
+                <Image Source="profile_generic.png" HeightRequest="100" Margin="50"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{DynamicResource labelHarga}" WidthRequest="100" FontSize="15" Text="Nama"/>
+                    <Label Style="{DynamicResource labelHarga}" FontSize="15" Text="{Binding Profile.Nama}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{DynamicResource labelHarga}" WidthRequest="100" FontSize="15" Text="Email"/>
+                    <Label Style="{DynamicResource labelHarga}" FontSize="15" Text="{Binding Profile.Email}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{DynamicResource labelHarga}" WidthRequest="100" FontSize="15" Text="Telepon"/>
+                    <Label FontSize="15" Text="{Binding Profile.Telepon}" Style="{DynamicResource labelHarga}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label FontSize="15" Text="Alamat" WidthRequest="100" Style="{DynamicResource labelHarga}"/>
+                    <Label  Margin="101,0,0,0" FontSize="15" Text="{Binding Profile.Alamat}" Style="{DynamicResource labelHarga}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="15" Text="Tanggal Daftar" WidthRequest="100" Style="{DynamicResource labelHarga}"/>
+                    <Label FontSize="15" Text="{Binding Profile.TanggalDaftar}" Style="{DynamicResource labelHarga}"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <Button Command="{Binding PesananSayaCommand}" HorizontalOptions="FillAndExpand" Margin="10" Style="{DynamicResource buttonStyle}" Text="Pesanan Saya"></Button>
+            </StackLayout>
+          
+        </Grid>
+       
+      
+    </ContentPage.Content>
+</ContentPage>

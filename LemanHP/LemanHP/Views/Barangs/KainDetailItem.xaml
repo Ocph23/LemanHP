@@ -60,6 +60,6 @@
 
             </StackLayout>
         </ScrollView>
-        <Button Style="{DynamicResource buttonStyle}" HorizontalOptions="FillAndExpand" Text="Beli"/>
+        <Button Style="{DynamicResource buttonStyle}" Command="{Binding CommandBeli}" HorizontalOptions="FillAndExpand" Text="Beli"/>
     </StackLayout>
 </ContentPage>

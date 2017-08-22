@@ -13,8 +13,9 @@
    
     <Grid Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="70*"/>
             <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <StackLayout Grid.Row="0">
             <ListView ItemsSource="{Binding Carts}"  x:Name="CarttemsListView"
@@ -33,7 +34,7 @@
                             <StackLayout Style="{DynamicResource itemsPanel}" >
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="80*"/>
+                                        <RowDefinition Height="auto"/>
                                         <RowDefinition Height="20*"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
@@ -43,7 +44,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Image Source="{Binding Fotoes[0].Picture,Converter={StaticResource ImageConverter}}" 
                                            Grid.Row="0" Grid.Column="0" HeightRequest="75" 
-                                           Margin="10" Aspect="AspectFill"></Image>
+                                           Margin="10" Aspect="AspectFit"></Image>
 
                                     <StackLayout Grid.RowSpan="2" Grid.Column="1"  Orientation="Vertical" Padding="10">
                                         <Label Text="{Binding Nama}"/>
@@ -51,7 +52,7 @@
                                         <Button HorizontalOptions="Start" FontSize="10" Text="Detail" Style="{DynamicResource buttonStyle}" Command="{Binding DetailCommand}"/>
                                     </StackLayout>
 
-                                    <Button Grid.Row="0" Grid.Column="2" Text="x" Margin="0" VerticalOptions="Start" TextColor="#F45B69" BackgroundColor="Transparent"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" Text="x" Margin="0" VerticalOptions="Start" TextColor="#F45B69" BackgroundColor="Transparent"/>
                                     <StackLayout Grid.Row="1" Grid.Column="0" Margin="5">
                                         <Label Text="{Binding Harga,StringFormat='Rp.{0}'}" FontSize="12" VerticalOptions="Start"/>
                                         <Label Text="{Binding Satuan,StringFormat='per {0}'}" FontSize="10"/>
@@ -75,13 +76,16 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        <StackLayout Grid.Row="1" BackgroundColor="#ACFCD9" Opacity="0.8" Padding="10">
+        <StackLayout Grid.Row="1" BackgroundColor="White" Opacity="0.8" Padding="10">
             <StackLayout Orientation="Horizontal" Margin="10">
                 <Label Style="{DynamicResource labelStyle}" Text="Subtotal" HorizontalOptions="StartAndExpand" />
-                <Label Style="{DynamicResource labelStyle}" Text="Rp.10000" HorizontalOptions="EndAndExpand" />
+                <Label Style="{DynamicResource labelStyle}" Text="{Binding Subtotal}" HorizontalOptions="EndAndExpand" />
             </StackLayout>
 
             <Button HorizontalOptions="FillAndExpand" Text="Proses Ke CheckOut" Command="{Binding CheckOutCommand }" Style="{DynamicResource buttonStyle}"/>
+        </StackLayout>
+        <StackLayout Grid.Row="2" Padding="5">
+            <Button HorizontalOptions="FillAndExpand" Text="Bersihkan Keranjang" Command="{Binding ClearCommand }" Style="{DynamicResource buttonStyle}"/>
         </StackLayout>
     </Grid>
 </ContentPage>

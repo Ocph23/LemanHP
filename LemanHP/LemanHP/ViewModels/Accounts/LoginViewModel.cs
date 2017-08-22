@@ -1,6 +1,9 @@
-﻿using LemanHP.Views;
+﻿using LemanHP.Helpers;
+using LemanHP.Models;
+using LemanHP.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,42 +19,71 @@ namespace LemanHP.ViewModels.Accounts
         private string _email;
         private ICommand _loginCommand;
 
-        public LoginViewModel(INavigation navigation)
+        public LoginViewModel(INavigation navigation, UserProfileViewModel profile)
         {
+            this.Profile = profile;
             Title = "Login";
+            Email = "Ocph23@gmail.com";
             this.navigation = navigation;
-            LoginCommand = new Command((x) => LoginActionAsync(x), LoginValidation);
+            LoginCommand = new Command(async(x) => await LoginActionAsync(x), LoginValidation);
             RegisterCommand = new Command(RegisterAction,(x)=>true);
         }
 
-        private async void LoginActionAsync(object x)
+        private async Task LoginActionAsync(object x)
         {
-            using (var res = new Services.RestService())
+
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
             {
-                try
+                using (var res = new Services.RestService())
                 {
                     var token = await res.GenerateTokenAsync(this.Email, Password);
                     if (token != null)
                     {
-                        Helpers.Alert.Show("Info", "Anda Berhasil Login");
+                        MessagingCenter.Send(new MessagingCenterAlert
+                        {
+                            Title = "Login",
+                            Message= "Login Success",
+                            Cancel = "OK"
+                        }, "message");
+
+                        this.Profile.Load();
+                        await navigation.PopToRootAsync();
                     }
                     else
                     {
-                        Helpers.Alert.Show("Error", "Gagal Login !");
+                        MessagingCenter.Send(new MessagingCenterAlert
+                        {
+                            Title = "Error",
+                            Message = "Gagal Login",
+                            Cancel = "OK"
+                        }, "message");
                     }
                 }
-                catch (Exception e)
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                MessagingCenter.Send(new MessagingCenterAlert
                 {
-
-                    Helpers.Alert.Show("Error", e.Message);
-                }
-               
+                    Title = "Error",
+                    Message = ex.Message,
+                    Cancel = "OK"
+                }, "message");
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
         private void RegisterAction(object obj)
         {
-            navigation.PushAsync(new Views.Account.RegisterView());
+            navigation.PushModalAsync(new Views.Account.RegisterView());
         }
 
         private bool LoginValidation(object arg)
@@ -62,8 +94,6 @@ namespace LemanHP.ViewModels.Accounts
             }else
                 return true;
         }
-
-     
 
         public string Password {
             get { return _password; }
@@ -96,5 +126,6 @@ namespace LemanHP.ViewModels.Accounts
         }
 
         public Command RegisterCommand { get; private set; }
+        internal UserProfileViewModel Profile { get; private set; }
     }
 }

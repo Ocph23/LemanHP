@@ -8,10 +8,10 @@
         <ScrollView>
             <StackLayout Margin="30,10">
                 <Button Text="Login" Command="{Binding LoginCommand}" Style="{DynamicResource buttonStyle}" HorizontalOptions="End"/>
-                <Entry Placeholder="Email" Style="{DynamicResource entryStyle}" />
-                <Entry Placeholder="Nama Lengkap" Style="{DynamicResource entryStyle}" />
-                <Entry Placeholder="Nomor Telepon"  Style="{DynamicResource entryStyle}" />
-                <Entry Placeholder="Alamat" HeightRequest="100" Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Email" Text="{Binding Pelanggan.Email}"  Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Nama Lengkap"  Text="{Binding Pelanggan.Nama}"  Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Nomor Telepon"  Text="{Binding Pelanggan.Telepon}"   Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Alamat"  Text="{Binding Pelanggan.Alamat}"  HeightRequest="100" Style="{DynamicResource entryStyle}" />
                 <Picker Title="Propinsi" ItemDisplayBinding="{Binding province}" SelectedItem="{Binding ProvinceSelected}" 
                         Style="{DynamicResource pickerStyle}" ItemsSource="{Binding Provinces}">
                 </Picker>

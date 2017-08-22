@@ -3,16 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:LemanHP;assembly=LemanHP"
              xmlns:converters="clr-namespace:LemanHP.Helpers;assembly=LemanHP"
-             x:Class="LemanHP.Views.Kategoris.KategoriItems"   BackgroundImage="wallpaper.png">
+             x:Class="LemanHP.Views.Kategoris.KategoriItems" Title="{Binding Title}"  BackgroundImage="wallpaper.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ImageConverter x:Key="ImageConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-  <ListView ItemsSource="{Binding Barangs}"
-            ItemTapped="Handle_ItemTapped"
+
+    <ListView ItemsSource="{Binding Barangs}" x:Name="ItemsListView"
             VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
@@ -32,18 +31,20 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Padding="10" Grid.Column="0">
                             <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="16"/>
-                            <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                            <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                            <Label Text="{Binding Bahan}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
+                            <Label Text="{Binding Stock}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
+                            <Label Text="{Binding Discount}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
                         </StackLayout>
                         <RelativeLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
-                            <Image Source="{Binding Gambar,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"
+                            <Image Source="{Binding Gambar,Converter={StaticResource ImageConverter}}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"
                                     Aspect="AspectFill"
                                     RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                                     RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
                             </Image>
-                            <Label Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End" TextColor="WhiteSmoke"  FontSize="14"/>
-                            <Label Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End" TextColor="WhiteSmoke" FontSize="12"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End" TextColor="WhiteSmoke"  FontSize="14"/>
+                                <Label Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End" TextColor="WhiteSmoke" FontSize="12"/>
+                            </StackLayout>
+                           
                         </RelativeLayout>
                     </Grid>
                 </ViewCell>

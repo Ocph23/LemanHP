@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemanHP", "LemanHP\LemanHP\LemanHP.csproj", "{067A28BB-D9D3-4681-B014-CAE74B79F92A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemanHP.Android", "LemanHP\LemanHP.Android\LemanHP.Android.csproj", "{BF609606-A925-4940-AEDB-FFED245C1B79}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemanHP.iOS", "LemanHP\LemanHP.iOS\LemanHP.iOS.csproj", "{79AB1739-282C-4958-82AA-D1B8A25DB95C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemanHP.UWP", "LemanHP\LemanHP.UWP\LemanHP.UWP.csproj", "{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,46 +83,6 @@ Global
 		{BF609606-A925-4940-AEDB-FFED245C1B79}.Release|x86.ActiveCfg = Release|Any CPU
 		{BF609606-A925-4940-AEDB-FFED245C1B79}.Release|x86.Build.0 = Release|Any CPU
 		{BF609606-A925-4940-AEDB-FFED245C1B79}.Release|x86.Deploy.0 = Release|Any CPU
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|iPhone.Build.0 = Debug|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|x64.ActiveCfg = Debug|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Debug|x86.ActiveCfg = Debug|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|ARM.ActiveCfg = Release|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|iPhone.ActiveCfg = Release|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|iPhone.Build.0 = Release|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|x64.ActiveCfg = Release|iPhone
-		{79AB1739-282C-4958-82AA-D1B8A25DB95C}.Release|x86.ActiveCfg = Release|iPhone
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|ARM.ActiveCfg = Debug|ARM
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|ARM.Build.0 = Debug|ARM
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|ARM.Deploy.0 = Debug|ARM
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|iPhone.ActiveCfg = Debug|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|x64.ActiveCfg = Debug|x64
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|x64.Build.0 = Debug|x64
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|x64.Deploy.0 = Debug|x64
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|x86.ActiveCfg = Debug|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|x86.Build.0 = Debug|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Debug|x86.Deploy.0 = Debug|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|Any CPU.ActiveCfg = Release|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|ARM.ActiveCfg = Release|ARM
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|ARM.Build.0 = Release|ARM
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|ARM.Deploy.0 = Release|ARM
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|iPhone.ActiveCfg = Release|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|iPhoneSimulator.ActiveCfg = Release|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|x64.ActiveCfg = Release|x64
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|x64.Build.0 = Release|x64
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|x64.Deploy.0 = Release|x64
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|x86.ActiveCfg = Release|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|x86.Build.0 = Release|x86
-		{D1EDDFA1-56F0-4641-BEF7-64D46AFF201A}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

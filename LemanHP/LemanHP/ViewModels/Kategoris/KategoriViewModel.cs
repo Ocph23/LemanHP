@@ -16,7 +16,7 @@ namespace LemanHP.ViewModels.Kategoris
         {
             Title = "Kategori";
             Items = new ObservableRangeCollection<Models.Kategori>();
-            //LoadItemsCommand = new Command(ExecuteLoadItemsCommand);
+            LoadItemsCommand = new Command(ExecuteLoadItemsCommand);
             ExecuteLoadItemsCommand();
         }
 

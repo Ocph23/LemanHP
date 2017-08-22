@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:LemanHP;assembly=LemanHP"
               xmlns:converters="clr-namespace:LemanHP.Helpers;assembly=LemanHP"
               BackgroundImage="wallpaper.png"
-             
              x:Class="LemanHP.Views.Barangs.BarangView" Title="{Binding Title}">
   <!--Pages can be added as references or inline-->
     <TabbedPage.Resources>

@@ -13,7 +13,7 @@ namespace LemanHP.Services
         Task<List<Province>> GetProvincies();
         Task<List<City>> GetCities(string provinceID);
         Task<CityResult> GetCity(string cityId, string provinceId);
-        Task<CostResult> GetCost(string courier, string weight, string origin, string destination);
+        Task<CostResult> GetCost(string courier, string weight,  string destination);
     }
 
     public class rajaongkirresult
@@ -24,6 +24,11 @@ namespace LemanHP.Services
     public class rajaongkircity
     {
         public CityResult1 rajaongkir { get; set; }
+    }
+
+    public class rajaongkircost
+    {
+        public CostResult rajaongkir { get; set; }
     }
 
     public class CityResult1 
@@ -85,11 +90,26 @@ namespace LemanHP.Services
     {
         public QueryModel query { get; set; }
         public status status { get; set; }
-        public string service { get; set; }
-        public string description { get; set; }
-        public List<cost> costs { get; set; }
+        
+        public City origin_details { get; set; }
+        public City destination_details { get; set; }
+        public List<CostResulBase> results { get; set; }
     }
 
+    public class CostResulBase
+    {
+        public string code { get; set; }
+        public string name { get; set; }
+      
+        public List<CostBase> costs { get; set; }
+    }
+
+    public class CostBase
+    {
+        public string service { get; set; }
+        public string description { get; set; }
+        public List<cost> cost { get; set; }
+    }
 
     public class cost
     {

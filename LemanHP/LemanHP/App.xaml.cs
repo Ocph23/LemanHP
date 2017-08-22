@@ -18,6 +18,11 @@ namespace LemanHP
         private void SetMainPageWithMasterDetail()
         {
             Current.MainPage = new Views.Home();
+            MessagingCenter.Subscribe<Helpers.MessagingCenterAlert>(this, "message", async (message) =>
+            {
+                await Current.MainPage.DisplayAlert(message.Title, message.Message, message.Cancel);
+
+            });
         }
 
         

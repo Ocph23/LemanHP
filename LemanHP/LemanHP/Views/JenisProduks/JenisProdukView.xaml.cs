@@ -15,11 +15,19 @@ namespace LemanHP.Views.JenisProduks
         public JenisProdukView()
         {
             InitializeComponent();
+            this.BindingContext = new ViewModels.JenisProduks.JenisProdukViewModel();
         }
 
-        private void ItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            var item = e.SelectedItem as Models.JenisProduk;
+            if (item == null)
+                return;
 
+            await Navigation.PushAsync(new Views.JenisProduks.JenisProdukItemsView(new ViewModels.JenisProduks.JenisProdukItemsViewModel(item)));
+
+            // Manually deselect item
+            ItemsListView.SelectedItem = null;
         }
     }
 }

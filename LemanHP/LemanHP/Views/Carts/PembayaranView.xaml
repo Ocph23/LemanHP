@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LemanHP.Views.Carts.PembayaranView" Title="Konfirmasi Pesanan"
+             BackgroundImage="wallpaper.png">
+    <ContentPage.Content>
+     
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Red" />
+                    <StackLayout>
+                        <Label Style="{DynamicResource labelHarga}" Text="Dear,"/>
+                        <Label Style="{DynamicResource labelHarga}" Text="{Binding dataPelanggan.Nama}"/>
+                        <Label Style="{DynamicResource labelHarga}" Text="{Binding KodePesanan,StringFormat='Kode Pemesanan : {0}'}"/>
+                        <Label Style="{DynamicResource labelHarga}" Text="{Binding Tanggal}"/>
+                        <Label Style="{DynamicResource labelHarga}" Text="Rincian sebagai berikut :"/>
+                    </StackLayout>
+                    <ListView Margin="5" ItemsSource="{Binding Datas}" x:Name="ItemsListView"
+                VerticalOptions="Fill">
+                        <ListView.Header>
+                            <Grid BackgroundColor="#17BDC9">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout  Grid.Column="0" BackgroundColor="#17BDC9">
+                                    <Label Text="Nama Produk"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"  BackgroundColor="#17BDC9">
+                                    <Label Text="Kode"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2"  BackgroundColor="#17BDC9">
+                                    <Label Text="Qt"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3"  BackgroundColor="#17BDC9">
+                                    <Label Text="Total"/>
+                                </StackLayout>
+                            </Grid>
+                        </ListView.Header>
+
+                        <!--Built in Cells-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+                                    <Grid BackgroundColor="#17BDC9">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                            <ColumnDefinition Width="10*"/>
+                                            <ColumnDefinition Width="30*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0" BackgroundColor="#17BDC9" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Nama}"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1"  BackgroundColor="#17BDC9" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Kode}"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="2" BackgroundColor="#17BDC9" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Count}"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="3"  HorizontalOptions="End" VerticalOptions="Center">
+                                            <Label Style="{DynamicResource labelHarga}" Text="{Binding Total,StringFormat='Rp. {0}'}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Footer>
+                            <Grid BackgroundColor="#17BDC9">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Style="{DynamicResource labelHarga}" Text="Diskon"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding TotalDiscount, StringFormat='Rp. {0}'}}"/>
+                                </StackLayout>
+
+
+                                <StackLayout Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Style="{DynamicResource labelHarga}" Text="Total"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="1"  HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Style="{DynamicResource labelHarga}" Text="{Binding TotalBiaya, StringFormat='Rp. {0}'}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ListView.Footer>
+                    </ListView>
+                    <StackLayout>
+                        <Label Style="{DynamicResource labelHarga}" Text="*Cek Email Anda Untuk Lihat Detail"/>
+                        <Label Style="{DynamicResource labelHarga}" Text="Anda Dapat Transfer Ke "/>
+                        <StackLayout Margin="10">
+                            <Label Style="{DynamicResource labelHarga}" Text="Bank Mandiri"/>
+                            <Label Text="Cabang Jayapura" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="An. Toko Batik Papua" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="Nomor Rekening : 123456789" Style="{DynamicResource labelHarga}"/>
+                        </StackLayout>
+                        <StackLayout Margin="10">
+                            <Label Text="Bank BCA" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="Cabang Jayapura" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="An. Toko Batik Papua" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="Nomor Rekening :987654321" Style="{DynamicResource labelHarga}"/>
+                        </StackLayout>
+                        <StackLayout Margin="10">
+                            <Label Text="Bank BRI" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="Cabang Jayapura" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="An. Toko Batik Papua" Style="{DynamicResource labelHarga}"/>
+                            <Label Text="Nomor Rekening : 567891234" Style="{DynamicResource labelHarga}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button Command="{Binding SetujuCommand}" Grid.Row="1" Style="{DynamicResource buttonStyle}" Margin="10" Text="Setuju" HorizontalOptions="FillAndExpand"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -38,7 +38,7 @@ namespace LemanHP.Views.Kategoris
             await Navigation.PushAsync(new Views.Kategoris.KategoriItems(new ViewModels.Kategoris.KategorisItemViewModel(item)));
 
             // Manually deselect item
-            //ItemsListView.SelectedItem = null;
+            ItemsListView.SelectedItem = null;
         }
     }
 }

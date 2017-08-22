@@ -6,35 +6,22 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="30,10">
-          
-            
-                <Image Source="profile_generic.png" HeightRequest="50" Margin="10"/>
-                <Entry Placeholder="Email" Style="{DynamicResource entryStyle}" />
-            <Entry Placeholder="Password" IsPassword="True" Style="{DynamicResource entryStyle}" />
-            <Entry Placeholder="Ulangi Password" IsPassword="True" Style="{DynamicResource entryStyle}" />
-            <Entry Placeholder="Nama Lengkap" Style="{DynamicResource entryStyle}" />
-            <Entry Placeholder="Alamat" HeightRequest="100" Style="{DynamicResource entryStyle}" />
-            <Picker Title="Propinsi" Style="{DynamicResource pickerStyle}">
-                <Picker.Items>
-                    <x:String>Baboon</x:String>
-                    <x:String>Capuchin Monkey</x:String>
-                </Picker.Items>
-            </Picker>
-            <Picker Title="Kabupaten" Style="{DynamicResource pickerStyle}">
-                <Picker.Items>
-                    <x:String>Baboon</x:String>
-                    <x:String>Capuchin Monkey</x:String>
-                </Picker.Items>
-            </Picker>
-            <Picker Title="Kecamatan" Style="{DynamicResource pickerStyle}">
-                <Picker.Items>
-                    <x:String>Baboon</x:String>
-                    <x:String>Capuchin Monkey</x:String>
-                </Picker.Items>
-            </Picker>
-            <Entry Placeholder="Nomor Telepon"  Style="{DynamicResource entryStyle}" />
+            <Image Source="profile_generic.png" HeightRequest="50" Margin="10"/>
+                <Entry Placeholder="Email" Text="{Binding DataPelanggan.Email}" Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Password" PropertyChanged="Entry_PropertyChanged" IsPassword="True" Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Ulangi Password" PropertyChanged="Entry_PropertyChanged_1" IsPassword="True" Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Nama Lengkap" Text="{Binding DataPelanggan.Nama}" Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Alamat" HeightRequest="100" Text="{Binding DataPelanggan.Alamat}" Style="{DynamicResource entryStyle}" />
+                <Entry Placeholder="Nomor Telepon" Text="{Binding DataPelanggan.Telepon}" Style="{DynamicResource entryStyle}" />
+                <Picker Title="Propinsi" ItemDisplayBinding="{Binding province}" SelectedItem="{Binding ProvinceSelected}" 
+                        Style="{DynamicResource pickerStyle}" ItemsSource="{Binding Provinces}">
+                </Picker>
+                <Picker Title="Kota" Style="{DynamicResource pickerStyle}" ItemsSource="{Binding Cities}" ItemDisplayBinding="{Binding name}"
+                        SelectedItem="{Binding CitySelected}">
+                </Picker>
+             
 
-            <Button Style="{DynamicResource buttonStyle}" Margin="0,20,0,0" Text="Register" HorizontalOptions="FillAndExpand"/>
+            <Button Style="{DynamicResource buttonStyle}" Command="{Binding RegisterCommand}" Margin="0,20,0,0" Text="Register" HorizontalOptions="FillAndExpand"/>
           
         </StackLayout>
         </ScrollView>

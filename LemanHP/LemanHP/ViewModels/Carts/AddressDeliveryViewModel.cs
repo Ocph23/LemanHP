@@ -6,6 +6,7 @@ using System.Diagnostics;
 using LemanHP.Helpers;
 using LemanHP.Services;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace LemanHP.ViewModels.Carts
 {
@@ -15,17 +16,72 @@ namespace LemanHP.ViewModels.Carts
         private ObservableCollection<CartItem> carts;
         private Province _province;
         private City _city;
-
         public ObservableCollection<City> Cities { get; set; }
         public ObservableCollection<Province> Provinces { get; set; }
+        public Pelanggan DataPelanggan { get; set; }
 
         public AddressDeliveryViewModel(INavigation navigation, ObservableCollection<CartItem> carts)
         {
             this.navigation = navigation;
             this.carts = carts;
+            DataPelanggan = new Pelanggan { TanggalDaftar = DateTime.Now };
             Cities = new ObservableCollection<City>();
             Provinces = new ObservableCollection<Province>();
             ExecuteLoadItemsCommand(null);
+            CheckToken();
+            LoginCommand = new Command((x) => LoginCommandAction());
+            PembayaranCommand = new Command( async(x) => await PembayaranCommandActionAsync(), (x) => PembayaranValidate());
+        }
+
+        private async void CheckToken()
+        {
+            var main = await Helper.GetMainPageAsync();
+            this.Token = main.Token;
+        }
+
+        private bool PembayaranValidate()
+        {
+           if(this.Token!=null || FormValid())
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
+
+        private async Task PembayaranCommandActionAsync()
+        {
+            var page = new Views.Carts.PembayaranView();
+
+            if (Token != null)
+            {
+
+                var pelanggan = await UserServiceDataStore.GetUserProfile(Token.Email);
+                var pembelian = new Models.Pembelian { PelangganId = pelanggan.Id, Tanggal = DateTime.Now };
+                foreach (var item in carts)
+                {
+                    pembelian.DetailPembelians.Add(new DetailPembelian { BarangId = item.Id });
+                }
+                page.BindingContext = new Carts.PembayaranViewModel(navigation, carts, pelanggan, pembelian);
+                await navigation.PushAsync(page);
+            }
+            else
+            {
+             /*   var pembelian = new Models.Pembelian { Pelanggan = DataPelanggan, Tanggal = DateTime.Now };
+                foreach (var item in carts)
+                {
+                    pembelian.DetailPembelians.Add(new DetailPembelian { BarangId = item.Id });
+                }
+                page.BindingContext = new Carts.PembayaranViewModel(navigation, carts, DataPelanggan, pembelian);
+                await navigation.PushAsync(page);*/
+            }
+
+        }
+
+        private async void LoginCommandAction()
+        {
+           
         }
 
         public Province ProvinceSelected
@@ -46,7 +102,6 @@ namespace LemanHP.ViewModels.Carts
             }
         }
 
-
         public City CitySelected
         {
             get { return _city; }
@@ -56,6 +111,17 @@ namespace LemanHP.ViewModels.Carts
             }
         }
 
+        public ICommand LoginCommand { get; private set; }
+        public Command PembayaranCommand { get; private set; }
+        public bool FormValid()
+        {
+            if (!string.IsNullOrEmpty(this.DataPelanggan.Alamat) && !string.IsNullOrEmpty(DataPelanggan.Email) && !string.IsNullOrEmpty(DataPelanggan.Nama) &&
+                !string.IsNullOrEmpty(DataPelanggan.Telepon) && ProvinceSelected != null && CitySelected != null)
+                return true;
+            else
+                return false;
+        }
+        public AuthenticationToken Token { get; private set; }
 
         private async void SetCities(Province value)
         {
@@ -100,7 +166,7 @@ namespace LemanHP.ViewModels.Carts
             }
         }
 
-
+      
 
         public AddressDeliveryViewModel()
         {

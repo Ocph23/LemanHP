@@ -26,7 +26,7 @@ namespace LemanHP.Models
         public double Stock { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public BarangType BarangType { get; set; }
-        public int Discount { get; set; }
+        public double Discount { get; set; }
         public string Keterangan { get; set; }
         public double HargaAfterDiscount {
             get { return Harga-( Harga * (Convert.ToDouble(Discount )/ 100)); }

@@ -1,4 +1,7 @@
 ﻿using LemanHP.Models;
+using System;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace LemanHP.ViewModels.Barangs
 {
@@ -10,6 +13,7 @@ namespace LemanHP.ViewModels.Barangs
         {
             Title = item.Nama;
             this.produk = item;
+            CommandBeli = new Command(async (x) => await BeliActionAsync());
         }
 
         public Produk produk {
@@ -23,6 +27,47 @@ namespace LemanHP.ViewModels.Barangs
             }
 
 
+        }
+        public Command CommandBeli { get; private set; }
+
+        private async Task BeliActionAsync()
+        {
+            var barang = (Barang)this.produk;
+            if (barang.Stock >= 1)
+            {
+                var cart = new CartItem();
+                cart.SetBarang(barang);
+                bool result = await CartDataStore.AddItemAsync(cart);
+                if(result)
+                {
+                    MessagingCenter.Send<Helpers.MessagingCenterAlert>(new Helpers.MessagingCenterAlert
+                    {
+                        Message = "Ditambahkan ke keranjang",
+                        Cancel = "Ok",
+                        Title = "Success",
+                        OnCompleted = new Action(MessageComplete)
+
+                    }, "message");
+                }
+            }
+            else
+            {
+                MessagingCenter.Send<Helpers.MessagingCenterAlert>(new Helpers.MessagingCenterAlert
+                {
+                    Message = "Stok Habis",
+                    Cancel = "Batal",
+                    Title = "Error",
+                    OnCompleted = new Action(MessageComplete)
+
+                }, "message");
+            }
+
+          
+        }
+
+        private void MessageComplete()
+        {
+            Helpers.Alert.Show("From Complete Message", "OK");
         }
 
 

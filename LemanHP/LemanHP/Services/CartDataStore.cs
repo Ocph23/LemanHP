@@ -68,7 +68,10 @@ namespace LemanHP.Services
 
         public Task<bool> SyncAsync()
         {
-            throw new NotImplementedException();
+            isInitialized = false;
+            Initialize();
+            return Task.FromResult( true);
+
         }
 
         public Task<bool> UpdateItemAsync(CartItem item)

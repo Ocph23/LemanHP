@@ -6,7 +6,9 @@
               Title="{Binding Title}"
              BackgroundImage="wallpaper.jpg">
     <ContentPage.Content>
+      
         <StackLayout HorizontalOptions="FillAndExpand" Margin="30">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Red" />
             <Image Source="profile_generic.png" HeightRequest="100" Margin="50"/>
             <Entry Text="{Binding Email}" Placeholder="Email" Style="{DynamicResource entryStyle}"/>
             <Entry Placeholder="Password" PropertyChanged="Entry_PropertyChanged" IsPassword="True" Style="{DynamicResource entryStyle}"/>
