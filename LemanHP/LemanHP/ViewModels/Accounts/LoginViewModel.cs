@@ -23,7 +23,7 @@ namespace LemanHP.ViewModels.Accounts
         {
             this.Profile = profile;
             Title = "Login";
-            Email = "Ocph23@gmail.com";
+           // Email = "Ocph23@gmail.com";
             this.navigation = navigation;
             LoginCommand = new Command(async(x) => await LoginActionAsync(x), LoginValidation);
             RegisterCommand = new Command(RegisterAction,(x)=>true);

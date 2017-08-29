@@ -27,8 +27,8 @@ namespace LemanHP.Views.Account
         {
             var password = (Entry)sender;
             if (!string.IsNullOrEmpty(password.Text))
-                //   vm.Password = password.Text;
-                vm.Password = "Sony@77";
+                   vm.Password = password.Text;
+               // vm.Password = "Sony@77";
 
 
         }
