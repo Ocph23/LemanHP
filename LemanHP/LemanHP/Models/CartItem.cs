@@ -72,10 +72,12 @@ namespace LemanHP.Models
             DeleteCommand = new Command((x) => DeleteAction(x));
 
 
-            Jumlahs = new List<int>()
+            Jumlahs = new List<int>();
+            for(var i=1; i<=10;i++)
             {
-                1,2,3,4,5
-            };
+                Jumlahs.Add(i);
+            }
+            
         }
 
         private void DeleteAction(object x)

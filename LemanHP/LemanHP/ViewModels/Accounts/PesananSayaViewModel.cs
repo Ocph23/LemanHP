@@ -48,9 +48,11 @@ namespace LemanHP.ViewModels.Accounts
         private Pelanggan _myAccount;
         private PembelianView _pembelian;
         private Bank _bank;
+        private INavigation navigation;
 
-        public PesananSayaViewModel(Pembelian pembelian,Pelanggan pelanggan)
+        public PesananSayaViewModel(Pembelian pembelian,Pelanggan pelanggan, INavigation navigation)
         {
+            this.navigation = navigation;
             this.pembelian = new PembelianView(pembelian, pelanggan);
             this.MyAccount = pelanggan;
             this.TakeFotoCommand = new Command(() => TakeFotoAction());
@@ -80,6 +82,7 @@ namespace LemanHP.ViewModels.Accounts
                     Message = "Konfirmasi Pembayaran Sukses, Kami Akan Segera Memvaliasi pembayaran anda",
                     Cancel = "OK"
                 }, "message");
+               await navigation.PopToRootAsync();
             }
             else
             {

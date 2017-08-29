@@ -39,7 +39,7 @@ namespace LemanHP.ViewModels.Accounts
 
         private async void PesanSayaAction()
         {
-           await  navigation.PushAsync(new Views.Account.PesananSaya(pembelian,Profile));
+           await  navigation.PushAsync(new Views.Account.PesananSaya(pembelian,Profile,navigation));
         }
 
         public Pelanggan Profile { get { return _pelanggan; }

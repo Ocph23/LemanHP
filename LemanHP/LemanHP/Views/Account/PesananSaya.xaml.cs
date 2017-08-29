@@ -17,6 +17,8 @@ namespace LemanHP.Views.Account
     {
         private Pembelian pembelian;
         private PesananSayaViewModel vm;
+        private Pelanggan profile;
+        private INavigation navigation;
 
         public PesananSaya()
         {
@@ -24,15 +26,17 @@ namespace LemanHP.Views.Account
            
         }
 
-        public PesananSaya(Pembelian pembelian,Pelanggan pelanggan)
+        public PesananSaya(Pembelian pembelian,Pelanggan pelanggan, INavigation navigation)
         {
             InitializeComponent();
-            this.vm=new PesananSayaViewModel(pembelian,pelanggan);
+            this.vm=new PesananSayaViewModel(pembelian,pelanggan,navigation);
             this.BindingContext = vm;
             this.pembelian = pembelian;
             
 
         }
+
+       
 
         private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
