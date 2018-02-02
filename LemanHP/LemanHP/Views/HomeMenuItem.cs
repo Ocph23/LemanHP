@@ -11,7 +11,7 @@ namespace LemanHP.Views
     {
         public HomeMenuItem()
         {
-            TargetType = typeof(Views.Barangs.BarangView);
+            TargetType = typeof(Views.Front);
         }
         public int Id { get; set; }
         public string Title { get; set; }

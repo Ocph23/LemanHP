@@ -8,7 +8,7 @@ namespace LemanHP.Helpers
 {
     public static class Alert
     {
-        public static async void Show(string title, string message)
+       /* public static async void Show(string title, string message)
         {
             await Xamarin.Forms.Application.Current.MainPage.DisplayAlert(title, message, "Ok");
 
@@ -18,6 +18,6 @@ namespace LemanHP.Helpers
         {
             return await Xamarin.Forms.Application.Current.MainPage.DisplayAlert(title, message, "Yes", "No");
 
-        }
+        }*/
     }
 }

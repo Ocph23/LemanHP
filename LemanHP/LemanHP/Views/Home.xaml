@@ -9,7 +9,7 @@
   <MasterDetailPage.Detail>
     <NavigationPage>
       <x:Arguments>
-        <pages:Barangs.BarangView/>
+        <pages:Front/>
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>

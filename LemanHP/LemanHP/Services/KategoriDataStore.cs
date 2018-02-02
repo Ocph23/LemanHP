@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LemanHP.Models;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using LemanHP.Helpers;
 
 [assembly: Dependency(typeof(LemanHP.Services.KategoriDataStore))]
 namespace LemanHP.Services
@@ -75,7 +76,12 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                 }
             }
         }

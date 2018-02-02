@@ -31,8 +31,8 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Padding="10" Grid.Column="0">
                             <Label Text="{Binding Nama}" LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="16"/>
-                            <Label Text="{Binding Stock}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
-                            <Label Text="{Binding Discount}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
+                            <Label Text="{Binding Stock,StringFormat='Stock : {0}'}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
+                            <Label Text="{Binding Discount,StringFormat='Diskon {0} %'}"  LineBreakMode="NoWrap" Style="{DynamicResource labelStyle}" FontSize="13"/>
                         </StackLayout>
                         <RelativeLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
                             <Image Source="{Binding Gambar,Converter={StaticResource ImageConverter}}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"

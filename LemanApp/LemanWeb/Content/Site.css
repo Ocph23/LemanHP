@@ -1,0 +1,76 @@
+﻿
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('../Images/DSC00985c.JPG');
+    background-size: cover;
+}
+hr {
+    border-color: rgba(232, 232, 232, 0.17);
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #E8E8E8;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/*#region pane; */
+
+.panel-default {
+    background-color: rgba(31, 31, 31, 0.9);
+    border: none;
+    border-bottom:1px solid ;
+}
+
+
+    .panel-default > .panel-heading {
+        background-color: rgba(31, 31, 31, 0.5);
+        font-size: large;
+    }
+
+/*#endregion */
+
+.modal-dialog > .modal-content {
+    background-color: rgba(90, 100, 113, 0.97);
+}
+
+
+.well {
+    background-color: rgba(232, 247, 245, 0.1);
+    border:none;
+}
+
+.btn-default {
+    background-color: transparent;
+    border: none;
+    color: #E8E8E8;
+}
+
+.form-control {
+    background-color: rgba(90, 145, 156, 0.77);
+    border: none;
+    color: #E8E8E8;
+}
+
+.thumbnail
+{
+    padding:0px;
+    border:none;
+}

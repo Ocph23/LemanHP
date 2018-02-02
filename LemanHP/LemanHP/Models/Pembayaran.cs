@@ -9,6 +9,8 @@
 
 namespace LemanHP.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
 
@@ -20,6 +22,7 @@ namespace LemanHP.Models
         public double NilaiTransfer { get; set; }
         public byte[] BuktiTransfer { get; set; }
         public System.DateTime TanggalBayar { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public StatusPembayaran StatusPembayaran { get; set; }
         public string Admin { get; set; }
         public string Pengirim { get; set; }

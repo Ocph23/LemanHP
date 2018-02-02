@@ -38,7 +38,7 @@ namespace LemanHP.ViewModels.Barangs
                         Message = "Ditambahkan ke keranjang",
                         Cancel = "Ok",
                         Title = "Success",
-                        OnCompleted = new Action(MessageComplete)
+                       
 
                     }, "message");
                 }
@@ -50,16 +50,12 @@ namespace LemanHP.ViewModels.Barangs
                     Message = "Stok Habis",
                     Cancel = "Batal",
                     Title = "Error",
-                    OnCompleted = new Action(MessageComplete)
                    
                 },"message");
             }
             
         }
 
-        private void MessageComplete()
-        {
-            Helpers.Alert.Show("From Complete Message", "OK");
-        }
+        
     }
 }

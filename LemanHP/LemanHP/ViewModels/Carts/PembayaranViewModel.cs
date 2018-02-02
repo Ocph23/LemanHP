@@ -116,13 +116,15 @@ namespace LemanHP.ViewModels.Carts
             }
             var berat = Datas.Sum(O => O.Berat);
             double tarif = 40000;
-            var biayaKirim = await CityDataStore.GetCost("jne",berat.ToString() , "114");
+            var kota = dataPelanggan.KodeKota.Trim();
+            var biayaKirim = await CityDataStore.GetCost("jne",berat.ToString() ,kota);
             if(biayaKirim!=null)
             {
-                var value = biayaKirim.results.FirstOrDefault().costs.Where(O => O.service == "OKE").FirstOrDefault();
-                tarif = value.cost.FirstOrDefault().value;
+                var value = biayaKirim.results.FirstOrDefault().costs.Where(O => O.service == "CTCOKE").FirstOrDefault();
+                if(value!=null)
+                     tarif = value.cost.FirstOrDefault().value;
             }
-            pembelian.Pengiriman = new Pengiriman { Berat = berat, Ekspedisi = "JNE", Kota = dataPelanggan.Telepon, Tarif = tarif, TanggalKirim=DateTime.Now };
+            pembelian.Pengiriman = new Pengiriman { Berat = berat, Ekspedisi = "JNE", Kota =kota, Tarif = tarif, TanggalKirim=DateTime.Now };
             Datas.Add(new PembayaranItem { Nama = "Biaya Pengiriman", Total = tarif});
             var kodeValidasiPembayaran = Helpers.Helper.KodeValidasi();
             Datas.Add(new PembayaranItem { Nama = "Kode Validasi", Total = kodeValidasiPembayaran});

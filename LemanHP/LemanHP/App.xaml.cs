@@ -3,9 +3,7 @@ using LemanHP.Views;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
+using System.Reflection;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace LemanHP
@@ -14,7 +12,10 @@ namespace LemanHP
     {
         public App()
         {
+           // Assembly assembly = typeof(App).GetTypeInfo().Assembly;
+          //  ConfigurationManager.Initialise(assembly.GetManifestResourceStream("LemanHP.App.config"));
             InitializeComponent();
+         
             SetMainPageWithMasterDetail();
           
         }
@@ -29,13 +30,7 @@ namespace LemanHP
             });
         }
 
-        protected override void OnStart()
-        {
-            base.OnStart();
-            MobileCenter.Start("android=c6bc6bca-6dc9-4d8a-a0e1-92a18273c77d;" ,
-                   typeof(Analytics), typeof(Crashes));
-        }
-
+     
 
 
     }

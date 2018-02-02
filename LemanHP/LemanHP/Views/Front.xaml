@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LemanHP.Views.Front"
+               Title="Home"  
+             BackgroundImage="wallpaper.jpg">
+    <ContentPage.Content>
+        <StackLayout Margin="30">
+            <StackLayout Orientation="Vertical">
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center" FontSize="15" Text="SELAMAT DATANG"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Margin="0,50,0,0" >
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center"  FontSize="15" Text="APLIKASI"/>
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center"  FontSize="15" Text="PENJUALAN BATIK PAPUA"/>
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center"  FontSize="15" Text=""/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Margin="0,200,0,0">
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center"  FontSize="15" Text="TOKO BATIK PAPUA"/>
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center"  FontSize="15" Text="2017"/>
+                <Label Style="{DynamicResource labelHarga}" HorizontalOptions="Center"  FontSize="15" Text="By Leman"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,11 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using LemanHP.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace LemanHP.Services
 {
@@ -16,10 +19,13 @@ namespace LemanHP.Services
         {
            
            // this.MaxResponseContentBufferSize = 256000;
-            this.BaseAddress = new Uri("http://192.168.1.30/");
+            //var a = ConfigurationManager.AppSettings["IP"];
+            this.BaseAddress = new Uri("http://192.168.10.1/");
+           // this.BaseAddress = new Uri("http://192.168.1.22/");
+            //this.BaseAddress = new Uri("http://batikpapua.gear.host/");
             this.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
             //key api = 57557c4f25f436213fe34a2090a266e2
-            Task.Run(async()=> await this.CekTokenAsync());
+           this.CekTokenAsync();
         }
 
         public RestService(string apiUrl)
@@ -28,10 +34,10 @@ namespace LemanHP.Services
           
         }
 
-        private async Task CekTokenAsync()
+        private async void CekTokenAsync()
         {
             var main = await Helpers.Helper.GetMainPageAsync();
-            if (main.Token != null)
+            if (main!=null && main.Token != null)
             {
                 this.DefaultRequestHeaders.Authorization =
                    new AuthenticationHeaderValue(main.Token.token_type, main.Token.access_token);
@@ -65,7 +71,12 @@ namespace LemanHP.Services
             }
             catch (Exception ex)
             {
-                Helpers.Alert.Show("Alert", ex.Message);
+                MessagingCenter.Send(new MessagingCenterAlert
+                {
+                    Title = "Error",
+                    Message = ex.Message,
+                    Cancel = "OK"
+                }, "message");
                 return null;
             }
          

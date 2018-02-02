@@ -19,9 +19,12 @@ namespace LemanHP.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+           // ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
 
             LoadApplication(new App());
         }
+
+      
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {

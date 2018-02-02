@@ -26,7 +26,7 @@ namespace LemanHP.Models
         public string Alamat { get; set; }
         public DateTime TanggalDaftar { get; set; }
         public string UserId { get; set; }
-    
+        public string KodeKota { get; set; }
         public virtual ICollection<Pembelian> Pembelians { get; set; }
         public string Password { get; internal set; }
     }

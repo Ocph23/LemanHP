@@ -1,4 +1,5 @@
-﻿using LemanHP.Models;
+﻿using LemanHP.Helpers;
+using LemanHP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -71,8 +72,12 @@ namespace LemanHP.Services
                 }
                 catch (Exception ex)
                 {
-
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                 }
             }
         }

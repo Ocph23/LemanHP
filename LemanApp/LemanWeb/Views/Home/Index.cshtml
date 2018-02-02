@@ -1,0 +1,1468 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div ng-view style="margin:5px"></div>
+
+
+<style>
+    #dropZone {
+        background: gray;
+        border: black dashed 3px;
+        width: 200px;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+
+<script type="text/ng-template" id="main.htm">
+    <div>
+        <center>
+            <h1>SELAMAT DATANG</h1>
+            <h1>ANEKA BATIK PAPUA</h1>
+            <h1>JAYAPURA</h1>
+        </center>
+    </div>
+</script>
+
+<script type="text/ng-template" id="kategori.htm">
+    <div ng-init="Init()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-default" type="button" role="button" href="#modal-container-634477" data-toggle="modal" ng-click="TambahTitle='New Kategori'">
+                        <em class="fa fa-plus"></em> Tambah
+                    </button>
+                    <div class="panel panel-default" style="margin:10px 0px 0px 0px">
+                        <div class="panel-heading clearfix">
+                            Data Kategori
+                            <div class="form-group pull-right">
+                                <input class="form-control" ng-model="Search" type="text" placeholder="Cari" />
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No
+                                        </th>
+
+                                        <th>
+                                            Nama
+                                        </th>
+                                        <th>
+                                            Keterangan
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-class="IsActive" ng-blur="IsActive=''" ng-repeat="item in Kategories | filter:Search | limitTo:10">
+                                        <td>
+                                            {{$index+1}}
+                                        </td>
+
+                                        <td>
+                                            {{item.Nama}}
+                                        </td>
+                                        <td>
+                                            {{item.Keterangan}}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-default" type="button" ng-click="Edit(item)" role="button" href="#modal-container-634477" data-toggle="modal">
+                                                    <em class="glyphicon glyphicon-edit"></em> Edit
+                                                </button>
+                                                <button class="btn btn-default" type="button" ng-click="DeleteSelected(item)" role="button" href="#modal-delete" data-toggle="modal">
+                                                    <em class="glyphicon glyphicon-remove"></em> Hapus
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-container-634477" role="dialog" aria-hidden="true" aria-labelledby="kategoriAddModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" aria-hidden="true" type="button" data-dismiss="modal">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="kategoriAddModalLabel">
+                                    {{TambahTitle}}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label for="kategorinama">
+                                                        Nama
+                                                    </label>
+                                                    <input class="form-control" ng-model="model.Nama" id="kategorinama" type="text" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="keterangan">
+                                                        Keterangan
+                                                    </label>
+                                                    <textarea class="form-control" ng-model="model.Keterangan" id="keterangan"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">
+                                    Keluar
+                                </button>
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="Simpan(model)">
+                                    Simpan
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-delete" role="dialog" aria-hidden="true" aria-labelledby="kategoriDeleteModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" aria-hidden="true" type="button" data-dismiss="modal">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="kategoriDeleteModalLabel">
+                                    Peringatan
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                Yakin Menghapus Data ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">
+                                    Batal
+                                </button>
+                                <button class="btn btn-primary" type="button" ng-click="Hapus()" data-dismiss="modal">
+                                    Ya
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</script>
+
+
+<script type="text/ng-template" id="jenisbarang.htm">
+    <div ng-init="Init()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-default" type="button" role="button" href="#modal-container-1" data-toggle="modal" ng-click="TambahTitle='Tambah Jenis Barang'">
+                        <em class="fa fa-plus"></em> Tambah
+                    </button>
+                    <div class="panel panel-default" style="margin:10px 0px 0px 0px">
+                        <div class="panel-heading clearfix">
+                            Data Jenis Barang
+                            <div class="form-group pull-right">
+                                <input class="form-control" ng-model="Search" type="text" placeholder="Cari" />
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+
+                                        <th>
+                                            Nama
+                                        </th>
+                                        <th>
+                                            Keterangan
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-class="IsActive" ng-blur="IsActive=''" ng-repeat="item in JenisBarangs | filter:Search | limitTo:10">
+                                        <td>
+                                            {{$index+1}}
+                                        </td>
+
+                                        <td>
+                                            {{item.Nama}}
+                                        </td>
+                                        <td>
+                                            {{item.Keterangan}}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-default" type="button" ng-click="Edit(item)" role="button" href="#modal-container-1" data-toggle="modal">
+                                                    <em class="glyphicon glyphicon-edit"></em> edit
+                                                </button>
+                                                <button class="btn btn-default" type="button" ng-click="DeleteSelected(item)" role="button" href="#modal-delete" data-toggle="modal">
+                                                    <em class="glyphicon glyphicon-remove"></em> Hapus
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-container-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" aria-hidden="true" type="button" data-dismiss="modal">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    {{TambahTitle}}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label for="kategorinama">
+                                                        Nama
+                                                    </label>
+                                                    <input class="form-control" ng-model="model.Nama" id="kategorinama" type="text" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="keterangan">
+                                                        Keterangan
+                                                    </label>
+                                                    <textarea class="form-control" ng-model="model.Keterangan" id="keterangan"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">
+                                    Keluar
+                                </button>
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="Simpan(model)">
+                                    Simpan
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-delete" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" aria-hidden="true" type="button" data-dismiss="modal">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Peringatan
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                Yakin Menghapus Data ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">
+                                    Batal
+                                </button>
+                                <button class="btn btn-primary" type="button" ng-click="Hapus()" data-dismiss="modal">
+                                    Ya
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</script>
+
+<!--Kaian-->
+<script type="text/ng-template" id="kain.htm">
+    <h1> DATA KAIN</h1>
+    <div ng-init="Init()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <a class="btn btn-default" type="button" href="!#modal-container-255946" role="button" data-toggle="modal" ng-click="model={};NewAdd()">
+                            <em class="fa fa-plus"></em> Tambah
+                        </a>
+                        <div class="form-group pull-right">
+                            <input class="form-control" ng-model="Pagenation.Search" type="text" placeholder="Cari" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row col-md-12">
+                        <div class="panel-group" id="panel-40393" ng-repeat="item in Kains | filter:Pagenation.Search | startFrom:Pagenation.currentPage*Pagenation.pageSize | limitTo:Pagenation.pageSize" style="margin:2px">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                   <label style="color:white">{{item.Nama}}</label>
+                                    <div class="btn-group pull-right">
+                                        <button class="btn btn-default" type="button" data-toggle="collapse" data-parent="#panel-40393" href="!#panel-{{item.Id}}">
+                                            <em class="glyphicon glyphicon-list"></em> Detail
+                                        </button>
+                                        <button class="btn btn-default" type="button" href="!#modal-container-255946" role="button" data-toggle="modal" ng-click="Edit(item)">
+                                            <em class="glyphicon glyphicon-edit"></em>Edit
+                                        </button>
+                                        <button class="btn btn-default" type="button" ng-click="DeleteSelected(item)" role="button" href="#modal-delete" data-toggle="modal">
+                                            <em class="glyphicon glyphicon-remove"></em> Delete
+                                        </button>
+                                    </div>
+                                    <div class="clearfix" />
+                                </div>
+                                <div id="panel-{{item.Id}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Nama Produk</td>
+                                                            <td>{{item.Nama}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Satuan</td>
+                                                            <td>{{item.Satuan}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Berat</td>
+                                                            <td>{{item.Berat}}kg</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Harga</td>
+                                                            <td>Rp.{{item.Harga|number}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Diskon</td>
+                                                            <td>{{item.Discount}}%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Stok</td>
+                                                            <td>{{item.Stock}} {{item.Satuan}}</td>
+                                                        </tr>
+                                                     
+                                                        <tr>
+                                                            <td>Bahan</td>
+                                                            <td>{{item.Bahan}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Motif</td>
+                                                            <td>{{item.Motif}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Kategori</td>
+                                                            <td>
+                                                                <div style="font-size:large">
+                                                                    <span style="margin:3px" ng-repeat="bk in item.BarangKategoris" class="badge">{{bk.Kategori.Nama}}</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Bahan Luntur</td>
+                                                            <td><input type="checkbox" ng-model="item.Luntur" disabled /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>detail</td>
+                                                            <td>{{item.Keterangan}}</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="col-md-12 well" style="height:200px" file-canvas>
+                                                    <img style="height:150px;width:100%" />
+                                                    <input style="visibility:hidden" type="file" file-model="myFile" />
+                                                </div>
+                                                <button class="form-control" ng-click="UploadPhoto(item, myFile)">Upload</button>
+                                                <div class="row col-md-12 well-sm">
+                                                    <div class="col-md-3" ng-repeat="pic in item.Fotoes">
+                                                        <img style="height:100px; width:100%" class="thumbnail" src="data:image/png;base64,{{pic.Picture}}" alt="Red dot" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                      
+                        <div class="col-md-12">
+                            <ul class="pagination">
+                                <li >
+                                    <a href="" class="btn" ng-disabled="Pagenation.currentPage == 0" ng-click="Pagenation.currentPage=Pagenation.currentPage-1">Prev</a>
+                                </li>
+                                <li ng-repeat="i in Pagenation.numberOfPagesData()">
+                                    <a href="" ng-click="Pagenation.currentPage=i">{{i+1}}</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="" class="btn" ng-disabled="Pagenation.currentPage == Pagenation.numberOfPages - 1" ng-click="Pagenation.currentPage=Pagenation.currentPage+1" >Next</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                 
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="modal fade" id="modal-container-255946" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Tambah Kain
+                        </h4>
+                    </div>
+                    <form role="form">
+                        <div class="modal-body">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="namaKain">
+                                            Nama Kain
+                                        </label>
+                                        <input ng-model="model.Nama" type="text" class="form-control" id="namaKain" />
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="satuan">
+                                            Satuan
+                                        </label>
+                                        <select class="form-control" ng-model="model.Satuan" ng-options="y for (x, y) in Satuans"></select>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="berat">
+                                            Berat Satuan
+                                        </label>
+                                        <input ng-model="model.Berat" type="number" class="form-control" id="berat" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="harga">
+                                            Harga Satuan
+                                        </label>
+                                        <input ng-model="model.Harga" type="number" class="form-control" id="harga" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label for="luntur">
+                                                Luntur  <input ng-model="model.Luntur" type="checkbox" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="stok">
+                                            Stock
+                                        </label>
+                                        <input ng-model="model.Stock" type="number" class="form-control" id="stok" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stok">
+                                            Diskon
+                                        </label>
+                                        <input ng-model="model.Discount" type="number" class="form-control" id="stok" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bahan">
+                                            Bahan
+                                        </label>
+                                        <input ng-model="model.Bahan" type="text" class="form-control" id="bahan" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="motif">
+                                            Motif
+                                        </label>
+                                        <input ng-model="model.Motif" type="text" class="form-control" id="motif" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kat">
+                                            Kategori
+                                        </label>
+                                        <ul class="nav nav-pills">
+                                            <li ng-repeat="item in model.BarangKategoris">
+                                                <div style="margin:5px; font-size:large">
+                                                    <span class="badge"><input style="font-size:small" type="checkbox" ng-model="item.IsSelect" />{{item.Kategori.Nama}}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-12">
+                                    <textarea placeholder="Detail" style=" max-width:450px; width:450px" ng-model="model.Keterangan"></textarea>
+                                </div>
+                               
+                            </div>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-default" data-dismiss="modal"  ng-click="Simpan(model)" >
+                                Save changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-delete" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" aria-hidden="true" type="button" data-dismiss="modal">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Peringatan
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                Yakin Menghapus Data ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">
+                                    Batal
+                                </button>
+                                <button class="btn btn-primary" type="button" ng-click="Hapus()" data-dismiss="modal">
+                                    Ya
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</script>
+
+<script type="text/ng-template" id="produk.htm">
+    <h1>DATA PRODUK JADI</h1>
+    <div ng-init="Init()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <a class="btn btn-default" type="button" data-toggle="modal" href="!#modal-container-255000" ng-click="model={};NewAdd()">
+                            <em class="fa fa-plus"></em> Tambah
+                        </a>
+                        <div class="form-group pull-right">
+                            <input class="form-control" ng-model="Pagenation.Search" type="text" placeholder="Cari" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-md-12">
+                        <div class="panel-group" id="panel-40393" ng-repeat="item in Produks  | filter:q | startFrom:Pagenation.currentPage*Pagenation.pageSize | limitTo:Pagenation.pageSize"  style="margin:2px">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label style="color:white">{{item.Nama}}</label>
+                                    <div class="btn-group pull-right">
+                                        <button class="btn btn-default" type="button" data-toggle="collapse" data-parent="#panel-40393" href="!#panel-{{item.Id}}">
+                                            <em class="glyphicon glyphicon-list"></em> Detail
+                                        </button>
+                                        <button class="btn btn-default" type="button"  data-toggle="modal" href="!#modal-container-255000" ng-click="Edit(item)">
+                                            <em class="glyphicon glyphicon-edit"></em>Edit
+                                        </button>
+                                        <button class="btn btn-default" type="button" ng-click="DeleteSelected(item)">
+                                            <em class="glyphicon glyphicon-remove"></em> Delete
+                                        </button>
+                                    </div>
+                                    <div class="clearfix" />
+                                </div>
+                                <div id="panel-{{item.Id}}" class="panel-collapse collapse">
+                                    <div class="panel-body" >
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Nama Produk</td>
+                                                            <td>{{item.Nama}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Satuan</td>
+                                                            <td>{{item.Satuan}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Berat</td>
+                                                            <td>{{item.Berat}}kg</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Harga</td>
+                                                            <td>Rp.{{item.Harga|number}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Stok</td>
+                                                            <td>{{item.Stock}} {{item.satuan}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Diskon</td>
+                                                            <td>{{item.Discount}}%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jenis Produk</td>
+                                                            <td>{{item.JenisProduk.Nama}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Warna</td>
+                                                            <td>{{item.Warna}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dimnesi</td>
+                                                            <td>{{item.Dimensi}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Ukuran</td>
+                                                            <td>{{item.Size}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Kategori</td>
+                                                            <td><div style="font-size:large">
+                                                                          <span style="margin:3px" ng-repeat="bk in item.BarangKategoris" class="badge">{{bk.Kategori.Nama}}</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>detail</td>
+                                                            <td>{{item.Keterangan}}</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="col-md-12 well" style="height:200px" file-canvas>
+                                                    <img style="height:150px;width:100%" />
+                                                    <input style="visibility:hidden" type="file" file-model="myFile" />
+                                                </div>
+                                                <button class="form-control" ng-click="UploadPhoto(item, myFile)">Upload</button>
+                                                <div class="row col-md-12 well-sm">
+                                                    <div class="col-md-3" ng-repeat="pic in item.Fotoes">
+                                                        <img style="height:100px; width:100%" class="thumbnail" src="data:image/png;base64,{{pic.Picture}}" alt="Red dot" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <hr />
+                                      
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <ul class="pagination">
+                            <li>
+                                <a href="" class="btn" ng-disabled="Pagenation.currentPage == 0" ng-click="Pagenation.currentPage=Pagenation.currentPage-1">Prev</a>
+                            </li>
+                            <li ng-repeat="i in Pagenation.numberOfPagesData()">
+                                <a href="" ng-click="Pagenation.currentPage=i">{{i+1}}</a>
+                            </li>
+
+                            <li>
+                                <a class="btn" href="" ng-disabled="Pagenation.currentPage == Pagenation.numberOfPages - 1" ng-click="Pagenation.currentPage=Pagenation.currentPage+1">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="modal fade" id="modal-container-255000" role="dialog" aria-labelledby="produkModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4 class="modal-title" id="produkModalLabel">
+                            Tambah Produk Jadi
+                        </h4>
+                    </div>
+                    <form role="form">
+                        <div class="modal-body">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="namaKain">
+                                            Nama Produk Jadi
+                                        </label>
+                                        <input ng-model="model.Nama" type="text" class="form-control" id="namaKain" />
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="satuan">
+                                            Satuan
+                                        </label>
+                                        <select class="form-control" ng-model="model.Satuan" ng-options="y for (x, y) in Satuans"></select>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="berat">
+                                            Berat Satuan
+                                        </label>
+                                        <input ng-model="model.Berat" type="number" class="form-control" id="berat" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="harga">
+                                            Harga Satuan
+                                        </label>
+                                        <input ng-model="model.Harga" type="number" class="form-control" id="harga" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stok">
+                                            Stock
+                                        </label>
+                                        <input ng-model="model.Stock" type="number" class="form-control" id="diskon" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="diskon">
+                                            Diskon
+                                        </label>
+                                        <input ng-model="model.Discount" type="number" class="form-control" id="stok" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bahan">
+                                            Jenis Produk
+                                        </label>
+                                        <select class="form-control" ng-model="model.JenisProdukId"  ng-options="x.Id as x.Nama for x in JenisBarangs">
+                                            <option value="">Pilih</option>
+                                        </select>
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                        <label for="bahan">
+                                           Warna
+                                        </label>
+                                        <input ng-model="model.Warna" type="text" class="form-control" id="bahan" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="motif">
+                                           Dimensi
+                                        </label>
+                                        <input ng-model="model.Dimensi" type="text" class="form-control" id="motif" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="motif">
+                                           Ukuran/Size
+                                        </label>
+                                        <input ng-model="model.Size" type="text" class="form-control" id="motif" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kat">
+                                            Kategori
+                                        </label>
+                                        <ul class="nav nav-pills">
+                                            <li ng-repeat="item in model.BarangKategoris">
+                                                <div style="margin:5px; font-size:large">
+                                                    <span class="badge"><input style="font-size:small" type="checkbox" ng-model="item.IsSelect" />{{item.Kategori.Nama}}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-12">
+                                    <textarea placeholder="Detail" style=" max-width:450px; width:450px" ng-model="model.Keterangan"></textarea>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="Simpan(model)">
+                                Save changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</script>
+
+
+<script type="text/ng-template" id="barang.htm">
+    <div ng-init="Init()">
+        <button class="btn btn-default" type="button" role="button" href="#modal-container-1" data-toggle="modal" ng-click="TambahTitle='Tambah Jenis Barang'">
+            <em class="fa fa-plus"></em> Tambah
+        </button>
+    </div>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="modal-container-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" aria-hidden="true" type="button" data-dismiss="modal">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    {{TambahTitle}}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label for="kategorinama">
+                                                        Nama
+                                                    </label>
+                                                    <input class="form-control" ng-model="model.nama" id="kategorinama" type="text" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="keterangan">
+                                                        Keterangan
+                                                    </label>
+                                                    <textarea class="form-control" ng-model="model.keterangan" id="keterangan"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">
+                                    Keluar
+                                </button>
+                                <button class="btn btn-primary" type="button" ng-click="Simpan(model)">
+                                    Simpan
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</script>
+
+
+
+<script type="text/ng-template" id="pembelian.htm">
+
+
+
+    <div ng-init="Init()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <div class="btn-group">
+                            <button class="btn btn-info" type="button" ng-click="Search1='Baru'; Search2=undefined">
+                                <em class="glyphicon glyphicon-new-window"></em> Baru
+                            </button>
+                            <button class="btn btn-warning" type="button"  ng-click="Search2='MenungguValidasi'">
+                                <em class="glyphicon glyphicon-warning-sign"></em> Menunggu Konfirmasi
+                            </button>
+                            <button class="btn btn-success" type="button"  ng-click="Search1='Sukses'; Search2=undefined">
+                                <em class="glyphicon glyphicon-folder-open"></em> Sukses
+                            </button>
+                            <button class="btn btn-danger" type="button"  ng-click="Search1='Batal';  Search2=undefined">
+                                <em class="glyphicon glyphicon-folder-close"></em> Batal
+                            </button>
+                        </div>
+                        <div class="form-group pull-right">
+                            <input class="form-control" ng-model="Search" type="text" placeholder="Cari" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row col-md-12">
+                        <div class="panel-group" id="panel-40393" ng-repeat="item in Pembelians | filter:{StatusPembelian:Search1, StatusPembayaran:Search2}|filter:Search" style="margin:10px">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="col-md-12" style="color:white">
+                                        <div class="col-md-3">{{item.Tanggal|date}}</div>
+                                        <div class="col-md-2">{{item.KodePemesanan}}</div>
+                                        <div class="col-md-3">{{item.Pelanggan.Nama}}</div>
+                                        <div class="col-md-3">{{item.StatusPembelian}}</div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-default" type="button" data-toggle="collapse" data-parent="#panel-40393" href="!#panel-{{item.Id}}">
+                                                <em class="glyphicon glyphicon-list"></em> Detail
+                                            </button>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="clearfix" />
+                                </div>
+                                <div style="margin:10px" id="panel-{{item.Id}}" class="panel-collapse collapse">
+                                    <h3>Detail</h3>
+                                    <table class="table" style="margin:10px">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                   Kode Barang
+                                                </th>
+                                                <th>
+                                                    Nama
+                                                </th>
+                                                <th>
+                                                   Jumlah
+                                                </th>
+                                                <th>
+                                                   Diskon
+                                                </th>
+                                                <th>
+                                                    Harga
+                                                </th>
+                                                <th>
+                                                   Biaya
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-class="IsActive" ng-blur="IsActive=''" ng-repeat="data in item.DetailPembelians | filter:Search | limitTo:10">
+                                                <td>
+                                                    {{data.Barang.Id}}
+                                                </td>
+
+                                                <td>
+                                                    {{data.Barang.Nama}}
+                                                </td>
+                                                <td>
+                                                    {{data.Jumlah}}
+                                                </td>
+                                                <td>
+                                                    {{data.Discount}}%
+                                                </td>
+                                                <td>
+                                                    {{data.Harga}}
+                                                </td>
+                                                <td>
+                                                    {{(data.Jumlah*data.Harga)-(((data.Jumlah*data.Harga)*data.Discount)/100)}}
+                                                </td>
+                                              
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                   
+                                    <div class="col-md-12" ng-show="item.Pembayaran!=null">
+                                        <h3>Pembayaran</h3>
+                                        <div class="col-md-6">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Nama Bank</td>
+                                                        <td>{{item.Pembayaran.BankTujuan}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nomor Rekening</td>
+                                                        <td>{{item.Pembayaran.RekeningTujuan}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Pengirim</td>
+                                                        <td>{{item.Pembayaran.Pengirim}}kg</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nilai Transfer</td>
+                                                        <td>Rp.{{item.Pembayaran.NilaiTransfer|number}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Kode Validasi Pembayaran</td>
+                                                        <td>Rp.{{item.KodeValidasiPembayaran}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Status Pembayaran</td>
+                                                        <td>{{item.Pembayaran.StatusPembayaran}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Di Validasi Oleh</td>
+                                                        
+                                                        <td>
+                                                            <div ng-show="item.Pembayaran.Admin==null">
+                                                                <button class="btn btn-success" data-toggle="modal" data-target="#modalvalidasi" ng-click="ValidasiProccess(item)" >Validasi</button>
+                                                            </div>
+                                                           <div ng-show="item.Pembayaran.Admin!=null">
+                                                               {{item.Pembayaran.Admin}}
+                                                           </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tanggal Bayar</td>
+                                                        <td>{{item.Pembayaran.TanggalBayar}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Bukti Transfer</h5>
+                                            <div class="row col-md-12 well-sm">
+                                                <img style="height:250px; width:200%" class="thumbnail" src="data:image/png;base64,{{item.Pembayaran.BuktiTransfer}}" alt="Red dot" />
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+                                   
+                                    <div class="col-md-12" ng-show="item.Pembayaran!=null && item.Pembayaran.StatusPembayaran=='Lunas'">
+                                        <h3>Pengiriman</h3>
+                                        <div class="col-md-6">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Ekspedisi</td>
+                                                        <td>{{item.Pengiriman.Ekspedisi}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nomor Resi Pengiriman</td>
+                                                        <td>
+                                                            <div ng-show="item.Pengiriman.NomorResi==null && item.Pembayaran.Admin!=null">
+                                                                <button class="btn btn-success" data-toggle="modal" data-target="#setResi" ng-click="SetResi(item)">Tambah Nomor Resi</button>
+                                                            </div>
+                                                            <div ng-show="item.Pengiriman.NomorResi!=null">
+                                                                {{item.Pengiriman.NomorResi}}
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kota</td>
+                                                        <td>{{item.Pengiriman.Kota}}kg</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Berat</td>
+                                                        <td>{{item.Pengiriman.Berat}}kg</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tarif</td>
+                                                        <td>Rp.{{item.Pengiriman.Tarif}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Biaya</td>
+                                                        <td>Rp.{{item.Pengiriman.Tarif * item.Pengiriman.Berat}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Tanggal Kirim</td>
+                                                        <td>{{item.Pengiriman.TanggalKirim|date}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-6">
+                                        
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modalvalidasi" role="dialog" aria-labelledby="modalvalidasi" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                    <h4 class="modal-title" id="modalvalidasi">
+                       Validasi Pembayaran
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <table class="table" style=" margin:10px">
+                            <tbody>
+                                <tr>
+                                    <td>Total Belanja</td>
+                                    <td>Rp.{{ModelValidasi.TotalBelanja|number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Discount</td>
+                                    <td>Rp.{{ModelValidasi.TotalDiscount|number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kode Validasi Pembayaran</td>
+                                    <td>Rp.{{ModelValidasi.KodeValidasi|number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Biaya Pengiriman</td>
+                                    <td>Rp.{{ModelValidasi.Pengiriman|number}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Total Biaya</h4></td>
+                                    <td>Rp.{{ModelValidasi.TotalBiaya}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Nilai Transfer</h4></td>
+                                    <td>Rp.{{ModelValidasi.NilaiTransfer}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Keterangan</td>
+                                    <td><textarea placeholder="Detail"  ng-model="ModelValidasi.Message"></textarea></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button ng-disabled="ModelValidasi.ValueValid ==false"  class="btn btn-default" data-dismiss="modal" ng-click="Approved(ModelValidasi)">
+                       Setujui
+                    </button>
+                    <button  class="btn btn-default" data-dismiss="modal" ng-click="Pendding(ModelValidasi)">
+                       Tunda
+                    </button>
+                    <button class="btn btn-default" data-dismiss="modal" ng-click="Cancel(ModelValidasi)">
+                        Batalkan
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Keluar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+   
+
+    <div class="modal fade" id="setResi" role="dialog" aria-labelledby="setResi" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                    <h4 class="modal-title" id="modalvalidasi">
+                       Tambah Nomor Resi Pengiriman
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <table class="table" style=" margin:10px">
+                            <tbody>
+                                <tr>
+                                    <td>Nomor Resi</td>
+                                    <td><input type="text" ng-model="model.NomorResi"/></td>
+                                </tr>
+                                <tr>
+                                    <td>TanggalKirim</td>
+                                    <td><input type="datetime-local" ng-model="model.TanggalKirim" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="modal-footer">
+                  
+                    <button class="btn btn-default" data-dismiss="modal" ng-click="UpdateResi(model)">
+                        Batalkan
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Keluar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</script>
+
+<script id="laporanpenjualan.htm" type="text/ng-template">
+    <div class="container-fluid" ng-init="Init()">
+        <div class="row">
+            <div class="col-md-12" style="margin:10px">
+                <table class="table">
+                    <caption><h1>LAPORAN PENJUALAN</h1></caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                               Kode
+                            </th>
+                            <th>
+                                Nama
+                            </th>
+                            <th>
+                                Jumlah
+                            </th>
+                            <th>
+                               Harga
+                            </th>
+                            <th>
+                               Diskon
+                            </th>
+                            <th>
+                                Biaya
+                            </th>
+
+                            <th>
+                                Nilai Diskon
+                            </th>
+                            
+                            <th>
+                                Total Biaya
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in Penjualan.Datas" >
+                            <td>
+                                {{$index+1}}
+                            </td>
+                            <td>
+                               {{ data.KodeBarang|numberLenght:4}}
+                            </td>
+                            <td>
+                                {{ data.NamaBarang}}
+                            </td>
+                          
+                            <td class="text-center">
+                                {{ data.Jumlah}}
+                            </td>
+                            <td class="text-right">
+                                {{ data.Harga|number}}
+                            </td>
+                            <td class="text-right">
+                                {{ data.Discount}}%
+                            </td>
+                            <td class="text-right">
+                                {{ data.Biaya|number}}
+                            </td>
+                            <td class="text-right">
+                                {{ data.NilaiDiscount|number}}
+                            </td>
+                            <td class="text-right">
+                                {{ data.TotalBiaya|number}}
+                            </td>
+                          
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr style="font-size:18px">
+                            <td class="text-right" colspan="8">Total Penjualan</td>
+                            <td class="text-right">{{Penjualan.TotalPenjualan|number}}</td>
+                        </tr>
+                      
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script id="laporanstok.htm" type="text/ng-template">
+    <div class="container-fluid" ng-init="Init()">
+        <div class="row">
+            <div class="col-md-12" style="margin:10px">
+                <table class="table">
+                    <caption><h1>LAPORAN SISA STOK</h1></caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Kode
+                            </th>
+                            <th>
+                                Nama
+                            </th>
+                            <th>
+                                Satuan
+                            </th>
+                            <th>
+                                Jumlah
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in Datas">
+                            <td>
+                                {{$index+1}}
+                            </td>
+                            <td>
+                                {{ data.Id|numberLenght:4}}
+                            </td>
+                            <td>
+                                {{ data.Nama}}
+                            </td>
+
+                         
+                            <td class="text-center">
+                                {{ data.Satuan }}
+                            </td>
+                            <td class="text-center">
+                                {{ data.Stock }}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>

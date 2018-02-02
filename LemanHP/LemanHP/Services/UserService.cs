@@ -7,6 +7,7 @@ using LemanHP.Models;
 using Xamarin.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
+using LemanHP.Helpers;
 
 [assembly: Dependency(typeof(LemanHP.Services.UserService))]
 namespace LemanHP.Services
@@ -19,7 +20,7 @@ namespace LemanHP.Services
             {
                 try
                 {
-                    var response = await service.GetAsync("api/Profile?email="+email);
+                    var response = await service.GetAsync("api/profile?email="+email);
                     if (response.IsSuccessStatusCode)
                     {
                         var content = await response.Content.ReadAsStringAsync();
@@ -27,14 +28,24 @@ namespace LemanHP.Services
                     }
                     else
                     {
-                        Helpers.Alert.Show("Alert", "Error "+ response.StatusCode.ToString());
+                        MessagingCenter.Send(new MessagingCenterAlert
+                        {
+                            Title = "Error",
+                            Message ="Terjadi Kesalahan",
+                            Cancel = "OK"
+                        }, "message");
                         return null;
                     }
                 }
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                     return null;
                 }
             }
@@ -47,7 +58,6 @@ namespace LemanHP.Services
             {
                 try
                 {
-
                     var data = JsonConvert.SerializeObject(pelanggan, Formatting.Indented);
                     var cnt = new StringContent(data, Encoding.UTF8, "application/json");
                     var response = await service.PostAsync("api/account", cnt);
@@ -58,13 +68,19 @@ namespace LemanHP.Services
                     }
                     else
                     {
-                        throw new System.Exception(response.StatusCode.ToString());
+                        var content = await response.Content.ReadAsStringAsync();
+                        throw new System.Exception(content);
                     }
                 }
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                     return false;
                 }
             }

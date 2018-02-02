@@ -96,10 +96,10 @@
                                 </StackLayout>
                             </StackLayout>
                             <RelativeLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
-                                <Image Source="{Binding Fotoes[0].Picture,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"
+                                <Image Source="{Binding Gambar,Converter={StaticResource ImageConverter}}" HorizontalOptions="FillAndExpand"
                                     Aspect="AspectFill"
                                     RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                                    RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">       
+                                    RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
                                 </Image>
                                 <Label Style="{DynamicResource labelStyle}" Margin="5" Text="{Binding Harga, StringFormat='Rp.{0}'}" HorizontalOptions="End"   FontSize="16"/>
                                 <Label Style="{DynamicResource labelStyle}" Margin="5,20" Text="{Binding Satuan, StringFormat='per {0}'}" HorizontalOptions="End"  FontSize="12"/>

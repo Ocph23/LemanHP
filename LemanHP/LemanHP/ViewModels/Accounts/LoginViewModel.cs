@@ -81,9 +81,9 @@ namespace LemanHP.ViewModels.Accounts
             }
         }
 
-        private void RegisterAction(object obj)
+        private async void RegisterAction(object obj)
         {
-            navigation.PushModalAsync(new Views.Account.RegisterView());
+           await  navigation.PushModalAsync(new Views.Account.RegisterView());
         }
 
         private bool LoginValidation(object arg)
@@ -100,7 +100,7 @@ namespace LemanHP.ViewModels.Accounts
             set
             {
                 SetProperty(ref _password, value);
-                LoginCommand = new Command((x) => LoginActionAsync(x), LoginValidation);
+                LoginCommand = new Command(async(x) => await LoginActionAsync(x), LoginValidation);
             }
         }
 
@@ -110,7 +110,7 @@ namespace LemanHP.ViewModels.Accounts
             set
             {
                 SetProperty(ref _email, value);
-                LoginCommand = new Command((x) => LoginActionAsync(x), LoginValidation);
+                LoginCommand = new Command( async (x) => await LoginActionAsync(x), LoginValidation);
             }
         }
 

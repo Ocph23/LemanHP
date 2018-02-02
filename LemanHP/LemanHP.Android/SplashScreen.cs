@@ -22,6 +22,9 @@ namespace LemanHP.Droid
         {
             base.OnCreate(savedInstanceState);
             StartActivity(typeof(MainActivity));
+
         }
+
+
     }
 }

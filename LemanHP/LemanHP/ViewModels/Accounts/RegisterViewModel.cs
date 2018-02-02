@@ -44,6 +44,7 @@ namespace LemanHP.ViewModels.Accounts
                 "Provinsi " + CitySelected.province + Environment.NewLine +
                 "Kabupaten " + CitySelected.city_name + Environment.NewLine +
                 "Kode Pos" + CitySelected.postal_code;
+                DataPelanggan.KodeKota = CitySelected.city_id.Trim();
                 var registered = await UserServiceDataStore.Register(DataPelanggan);
                 if (registered)
                 {
@@ -51,15 +52,6 @@ namespace LemanHP.ViewModels.Accounts
                     {
                         Title = "Info",
                         Message = "Registrasi Sukses, Cek Email Anda",
-                        Cancel = "OK"
-                    }, "message");
-                }
-                else
-                {
-                    MessagingCenter.Send(new MessagingCenterAlert
-                    {
-                        Title = "Error",
-                        Message = "Registrasi Gagal",
                         Cancel = "OK"
                     }, "message");
                 }

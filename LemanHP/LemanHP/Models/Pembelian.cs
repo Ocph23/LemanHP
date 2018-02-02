@@ -9,6 +9,8 @@
 
 namespace LemanHP.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
     
@@ -25,6 +27,7 @@ namespace LemanHP.Models
         public int PelangganId { get; set; }
         public double KodeValidasiPembayaran { get; set; }
         public System.DateTime Tanggal { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public StatusPembelian StatusPembelian { get; set; }
         public string KodePemesanan { get; set; }
 

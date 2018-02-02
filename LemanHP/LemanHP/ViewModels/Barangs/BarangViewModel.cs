@@ -8,6 +8,7 @@ using LemanHP.Models;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace LemanHP.ViewModels.Barangs
 {
@@ -16,8 +17,8 @@ namespace LemanHP.ViewModels.Barangs
         public BarangViewModel()
         {
             Title = "Home";
-            Kains = new ObservableRangeCollection<Models.Kain>();
-            Produks = new ObservableRangeCollection<Models.Produk>();
+            Kains = new ObservableCollection<Models.Kain>();
+            Produks = new ObservableCollection<Models.Produk>();
             LoadItemsCommand = new Command((x)=> ExecuteLoadItemsCommand(x));
             ExecuteLoadItemsCommand(null);
         }
@@ -34,9 +35,15 @@ namespace LemanHP.ViewModels.Barangs
                 Kains.Clear();
                 Produks.Clear();
                 var kains = await KainDataStore.GetItemsAsync(true);
-                Kains.ReplaceRange(kains);
+              foreach(var item in kains)
+                {
+                    Kains.Add(item);
+                }
                 var produks = await ProdukDataStore.GetItemsAsync(true);
-                Produks.ReplaceRange(produks);
+               foreach(var item in produks)
+                {
+                    Produks.Add(item);
+                }
 
             }
             catch (Exception ex)
@@ -55,8 +62,8 @@ namespace LemanHP.ViewModels.Barangs
             }
         }
 
-        public ObservableRangeCollection<Kain> Kains { get; private set; }
+        public ObservableCollection<Kain> Kains { get; private set; }
         public ICommand LoadItemsCommand { get; set; }
-        public ObservableRangeCollection<Produk> Produks { get; private set; }
+        public ObservableCollection<Produk> Produks { get; private set; }
     }
 }

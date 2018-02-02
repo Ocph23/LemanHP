@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LemanHP.Models;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using LemanHP.Helpers;
 
 [assembly: Dependency(typeof(LemanHP.Services.KainDataStore))]
 namespace LemanHP.Services
@@ -14,7 +15,10 @@ namespace LemanHP.Services
     {
         bool isInitialized;
         List<Kain> items;
+        public KainDataStore()
+        {
 
+        }
         public Task<bool> AddItemAsync(Kain item)
         {
             throw new NotImplementedException();
@@ -63,7 +67,7 @@ namespace LemanHP.Services
                         {
                             items.Add(item);
                         }
-                        isInitialized = true;
+                      
                     }
                     else
                     {
@@ -73,7 +77,16 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
+                }
+                finally
+                {
+                    isInitialized = true;
                 }
             }
         }

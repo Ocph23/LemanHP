@@ -74,7 +74,12 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new Helpers.MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                 }
             }
         }

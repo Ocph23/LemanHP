@@ -17,8 +17,8 @@ namespace LemanHP.Views.Account
     {
         private Pembelian pembelian;
         private PesananSayaViewModel vm;
-        private Pelanggan profile;
-        private INavigation navigation;
+       
+       
 
         public PesananSaya()
         {

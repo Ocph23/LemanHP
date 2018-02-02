@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Newtonsoft.Json;
 using System.Net.Http.Formatting;
 using System.Net.Http;
+using LemanHP.Helpers;
 
 [assembly: Dependency(typeof(LemanHP.Services.PembelianService))]
 
@@ -35,7 +36,12 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                     return false;
                 }
             }

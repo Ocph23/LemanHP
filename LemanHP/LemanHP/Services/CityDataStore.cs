@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LemanHP.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,12 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message =ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                     return null;
                 }
             }
@@ -67,13 +73,24 @@ namespace LemanHP.Services
                     }
                     else
                     {
-                        throw new System.Exception(response.StatusCode.ToString());
+                        MessagingCenter.Send(new MessagingCenterAlert
+                        {
+                            Title = "Error",
+                            Message = "Terjadi Kesalahan",
+                            Cancel = "OK"
+                        }, "message");
+                        return null;
                     }
                 }
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                     return null;
                 }
             }
@@ -109,7 +126,12 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                     return null;
                 }
             }
@@ -145,13 +167,23 @@ namespace LemanHP.Services
                     }
                     else
                     {
-                        throw new System.Exception(response.StatusCode.ToString());
+                        MessagingCenter.Send(new MessagingCenterAlert
+                        {
+                            Title = "Error",
+                            Message ="Terjadi Kesalahan",
+                            Cancel = "OK"
+                        }, "message");
                     }
                 }
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                 }
             }
 
@@ -184,7 +216,12 @@ namespace LemanHP.Services
                 catch (Exception ex)
                 {
 
-                    Helpers.Alert.Show("Alert", ex.Message);
+                    MessagingCenter.Send(new MessagingCenterAlert
+                    {
+                        Title = "Error",
+                        Message = ex.Message,
+                        Cancel = "OK"
+                    }, "message");
                 }
             }
 

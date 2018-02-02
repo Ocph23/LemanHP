@@ -4,8 +4,10 @@
              x:Class="LemanHP.Views.Helps.Help">
   <!--Pages can be added as references or inline-->
 
-    <ContentPage Title="Cara Belanja"  BackgroundImage="wallpaper.png" />
-    <ContentPage Title="Cara Bayar" BackgroundImage="wallpaper.png">
-        <Label Text="Cara Pembayaran"></Label>
+    <ContentPage Title="Cara Belanja"  BackgroundImage="wallpaper.png" >
+        <Label Margin="10" Style="{DynamicResource labelStyle}" Text="Pilih barang yang ingin dibeli lalu klik tombol 'BELI', lalu pilih menu keranjang dan klik tombol 'PROSES KE CHECKOUT', lalu klik tombol 'SETUJU' jika ingin menyelesaikan transaksi. Atau pilih menu home jika anda masih ingin berbelanja."></Label>
+    </ContentPage>
+        <ContentPage Title="Cara Bayar" BackgroundImage="wallpaper.png">
+        <Label Margin="10" Style="{DynamicResource labelStyle}" Text="Pilih menu 'Profile' lalu klik tombol 'PESANAN SAYA', lalu isi form yang di sediakan, untuk form bank, anda tinggal memilih bank tujuan yang ingin ditransfer. untuk form Pengirim, isi nama pengirim, dan untuk form jumlah, masukkan nominal harga yang harus dibayar  dan kemudian klik tombol 'KONFIRMASI', lalu kami akan mengkonfirmasi pembayaran anda dan  anda akan menerima nomor resi dari pihak kami"></Label>
     </ContentPage>
 </TabbedPage>

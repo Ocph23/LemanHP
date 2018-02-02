@@ -42,7 +42,7 @@
                                         <ColumnDefinition Width="45*"/>
                                         <ColumnDefinition Width="20*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding Fotoes[0].Picture,Converter={StaticResource ImageConverter}}" 
+                                    <Image Source="{Binding Gambar,Converter={StaticResource ImageConverter}}" 
                                            Grid.Row="0" Grid.Column="0" HeightRequest="75" 
                                            Margin="10" Aspect="AspectFit"></Image>
 
